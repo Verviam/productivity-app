@@ -1,10 +1,18 @@
 from tkinter import *
 
-root = Tk()
-root.title("Productivity")
+root = Tk(className='Productivity')
+# set window size
+root.geometry("1080x720")
+
+#set window color
+root.configure(bg='white')
+
+Frame(height = 20,width = 640,bg = 'grey').pack()
+
+
+
+
 root.mainloop()
-
-
 
 # window = tk.Tk()
 
