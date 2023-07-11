@@ -1,19 +1,24 @@
 from tkinter import *
 
-root = Tk(className='Productivity')
-root.geometry("1080x720") # set window size
+evan_gao = Tk(className='Productivity')
+evan_gao.geometry("1080x720") # set window size
 
-root.configure(bg='white') # set window color
+evan_gao.configure(bg='white') # set window color
 
 
 Frame(height = 20,width = 640,bg = 'grey').pack()
 
-clickMe = Button(root, text="click here for cookies").pack() # creates button
+clicks = 0
+
+def clickcounter():
+    clicks + 1
+
+clickMe = Button(evan_gao, text="Click here for Evan Gao").pack(), COMMAND = clickcounter # creates button
+counter = Button(evan_gao, text=str(clicks)).pack() # click
 
 
 
-
-root.mainloop()
+evan_gao.mainloop()
 
 
 # window = tk.Tk()
