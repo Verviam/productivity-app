@@ -14,6 +14,11 @@ Frame(height = 20,width = 640,bg = 'grey').pack()
 
 root.mainloop()
 
+<<<<<<< HEAD
+=======
+asdfasdfsadfas = 1
+
+>>>>>>> 1b5b45aeb9366e642bcc658a2f2205c63602164f
 # window = tk.Tk()
 
 
