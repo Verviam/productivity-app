@@ -1,13 +1,14 @@
 from tkinter import *
 
 root = Tk(className='Productivity')
-# set window size
-root.geometry("1080x720")
+root.geometry("1080x720") # set window size
 
-#set window color
-root.configure(bg='white')
+root.configure(bg='white') # set window color
+
 
 Frame(height = 20,width = 640,bg = 'grey').pack()
+
+clickMe = Button(root, text="click here for cookies").pack() # creates button
 
 
 
