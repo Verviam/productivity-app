@@ -1,3 +1,1 @@
-from tkinter import *
-
-root = Tk()
+from productivitygui import * #might change to just import without * to prevent errors
