@@ -1,1 +1,1 @@
-from productivitygui import * #might change to just import without * to prevent errors
+from productivityGui import * #might change to just import without * to prevent errors
