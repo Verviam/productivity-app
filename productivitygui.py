@@ -19,7 +19,14 @@ counter = Button(evan_gao, text=str(clicks)).pack() # click
 
 
 evan_gao.mainloop()
+clickMe = Button(root, text="Click here summon Jack Shen").pack() # creates button
 
+canvas = Canvas(root).pack()
+menu = Menu(root).pack()
+
+root.mainloop()
+
+#https://subscription.packtpub.com/book/programming/9781785889738/1/ch01lvl1sec13/widgets-the-building-blocks-of-gui-programs
 
 # window = tk.Tk()
 
