@@ -1,10 +1,11 @@
 from tkinter import *
+from PIL import Image,ImageTk
 
 root = Tk(className='Productivity')
 root.geometry("1080x720") # set window size
 root.configure(bg='white') # set window color
 
-Label(root, text='To Do List', bg='white', font=("Comic Sans MS", 15), wraplength=300).place(x=50, y=0) #Edit font size and wrap length and place later
+Label(root, text="To Do List", bg="white", font=("Comic Sans MS", 15), wraplength=300).place(x=50, y=0) #Edit font size and wrap length and place later
 
 tasks = Listbox(root, selectbackground='Gold', bg='Silver', font=('Helvetica', 12), height=12, width=25)
 scroller = Scrollbar(root, orient=VERTICAL, command=tasks.yview)
@@ -17,7 +18,11 @@ tasks.place(x=35, y=50)
 taskbar = Listbox(root, selectbackground='white', bg='azure3', font=('Helvetica', 12), height=50, width=5)
 taskbar.place(x=-1, y=-1, height=800)
 
-home = PhotoImage.PhotoiImage(Image.open("home.jpg"))
+homeimg = ImageTk.PhotoImage(Image.open("home.png"))
+home = Label(root,image=homeimg, bg="white")
+home.pack()
+
+
 
 root.mainloop()
 
