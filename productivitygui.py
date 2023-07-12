@@ -8,10 +8,11 @@ root.configure(bg='white') # set window color
 
 Frame(height = 20,width = 640,bg = 'grey').pack()
 
-clickMe = Button(root, text="Click here summon Jack Shen").pack() # creates button
+clickMe = Button(root, text="Click here for Monkey").pack() # creates button
 
 canvas = Canvas(root).pack()
 menu = Menu(root).pack()
+
 
 root.mainloop()
 
