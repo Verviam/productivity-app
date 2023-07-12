@@ -19,8 +19,9 @@ taskbar_border_color = Frame(root, background="black")
 taskbar = Listbox(root, selectbackground='black', bg='azure3', font=('Helvetica', 12), height=50, width=5)
 taskbar.place(x=-1, y=-1, height=800)
 
-homeimg = ImageTk.PhotoImage(Image.open("home.png"))
-home = Label(root,image=homeimg, bg="white")
+# opens home.png
+homeImg = ImageTk.PhotoImage(Image.open("home.png"))
+home = Label(root,image=homeImg, bg="white")
 home.pack()
 
 
@@ -36,11 +37,6 @@ root.mainloop()
 # scrollbar = Scrollbar(root)
 # scrollbar.pack(side=RIGHT, fill= Y)
 
-
-
-
-
-#https://subscription.packtpub.com/book/programming/9781785889738/1/ch01lvl1sec13/widgets-the-building-blocks-of-gui-programs
 
 # window = tk.Tk()
 
