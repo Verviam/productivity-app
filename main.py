@@ -1,1 +1,4 @@
-from toDoListGui import * #might change to just import without * to prevent errors
+import mainGui, schedule, toDoList 
+
+
+print("Productivity: Get Stuff Done \n Menu: To-Do List, Habit Tracker, My Schedule, ")
