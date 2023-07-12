@@ -1,1 +1,1 @@
-from productivityGui import * #might change to just import without * to prevent errors
+from toDoListGui import * #might change to just import without * to prevent errors
