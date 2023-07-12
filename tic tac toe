@@ -162,7 +162,7 @@ def userClick():
 
 def reset_game():
     global TTT, winner,XO, draw
-    time.sleep(3)
+    time.sleep(1)
     XO = 'x'
     draw = False
     game_opening()
