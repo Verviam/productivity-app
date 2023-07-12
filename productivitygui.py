@@ -2,22 +2,31 @@ from tkinter import *
 
 root = Tk(className='Productivity')
 root.geometry("1080x720") # set window size
-
 root.configure(bg='white') # set window color
 
+Label(root, text='To Do List', bg='PaleVioletRed', font=("Comic Sans MS", 15), wraplength=300).place(x=35, y=0) #Edit font size and wrap length and place later
 
-Frame(height = 20,width = 640,bg = 'grey').pack()
+tasks = Listbox(root, selectbackground='Gold', bg='Silver', font=('Helvetica', 12), height=12, width=25)
+scroller = Scrollbar(root, orient=VERTICAL, command=tasks.yview)
+scroller.place(x=260, y=50, height=232)
 
-clickMe = Button(root, text="Click here for Monkey").pack() # creates button
-
-canvas = Canvas(root).pack()
-scrollbar = Scrollbar(root)
-scrollbar.pack(side=RIGHT, fill= Y)
-
-
-
+tasks.config(yscrollcommand=scroller.set)
+tasks.place(x=35, y=50)
 
 root.mainloop()
+
+
+# Frame(height = 20,width = 640,bg = 'grey').pack()
+
+# clickMe = Button(root, text="Click here for Monkey").pack() # creates button
+
+# canvas = Canvas(root).pack()
+# scrollbar = Scrollbar(root)
+# scrollbar.pack(side=RIGHT, fill= Y)
+
+
+
+
 
 #https://subscription.packtpub.com/book/programming/9781785889738/1/ch01lvl1sec13/widgets-the-building-blocks-of-gui-programs
 
