@@ -7,8 +7,8 @@ def addHabit():
     toAdd = input("Add Habits: ")
     habits.append((toAdd))
     
-    # ask user to input more habits
-    #for habit in habits:
+    for habit in habits:
+        
         # add each habit in habits.txt
     # open("habits.txt", "a")
 addHabit()
