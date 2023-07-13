@@ -21,9 +21,8 @@ taskbar.place(x=0, y=0, height=800)
 
 #home
 homeImg = ImageTk.PhotoImage(Image.open("home.png"))
-home = Label(root,image=homeImg, bg="white")
+home = Label(root,image=homeImg, bg="")
 home.pack(side='top',pady=100)
-
 
 root.mainloop()
 
