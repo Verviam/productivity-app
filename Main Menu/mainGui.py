@@ -2,8 +2,11 @@ from tkinter import *
 from PIL import Image,ImageTk
 
 root = Tk(className='Productivity')
+root.overrideredirect(True) # turns off title bar, geometry
 root.geometry("1080x720") # set window size
-root.configure(bg='white') # set window color
+title_bar = Frame(root, bg='black', relief='raised', bd=2)
+close_button = Button(title_bar, text='X', command=root.destroy)
+window = Canvas(root, bg='black')
 
 Label(root, text="To Do List", bg="white", font=("Comic Sans MS", 15), wraplength=300).place(x=50, y=0) #Edit font size and wrap length and place later
 
@@ -21,7 +24,7 @@ taskbar.place(x=0, y=0, height=800)
 
 #home
 homeImg = ImageTk.PhotoImage(Image.open("home.png"))
-home = Label(root,image=homeImg, bg="")
+home = Label(root, image=homeImg, bg="white")
 home.pack(side='top',pady=100)
 
 root.mainloop()
