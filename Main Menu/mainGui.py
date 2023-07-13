@@ -40,10 +40,6 @@ root.mainloop()
 
 
 
-
-
-#https://subscription.packtpub.com/book/programming/9781785889738/1/ch01lvl1sec13/widgets-the-building-blocks-of-gui-programs
-
 # window = tk.Tk()
 
 
