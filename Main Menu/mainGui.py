@@ -32,6 +32,8 @@ title_label.pack(side=LEFT, pady=4, padx=100) #484
 logoImg = ImageTk.PhotoImage(Image.open("productivity_icon.png"))
 logo = Label(root, image=logoImg)
 logo.pack(side=LEFT,pady=0)
+Image_icon = PhotoImage(file = "productivity_icon.png")
+root.iconphoto(False, Image_icon)
 
 #close button
 close_button = Label(title_bar, text=" X ", bg="#073B3A", fg="#21D375", font="Ebrima")
@@ -105,20 +107,6 @@ root.mainloop()
 
 # window.mainloop()
 
-
-# # Initializing the python to do list GUI window
-# root = Tk()
-# root.title('Productivity')
-# root.geometry('300x400')
-# root.resizable(0, 0)
-# root.config(bg="PaleVioletRed")
-
-# # Heading Label
-# Label(root, text='TechVidvan Python To Do List', bg='PaleVioletRed', font=("Comic Sans MS", 15), wraplength=300).place(x=35, y=0)
-
-# # Listbox with all the tasks with a Scrollbar
-# tasks = Listbox(root, selectbackground='Gold', bg='Silver', font=('Helvetica', 12), height=12, width=25)
-
 # scroller = Scrollbar(root, orient=VERTICAL, command=tasks.yview)
 # scroller.place(x=260, y=50, height=232)
 
@@ -145,6 +133,3 @@ root.mainloop()
 #                  command=lambda: delete_item(tasks))
 # delete_btn.place(x=150, y=350)
 
-# # Finalizing the window
-# root.update()
-# root.mainloop()
