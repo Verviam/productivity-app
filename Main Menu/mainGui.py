@@ -15,7 +15,7 @@ def move_app(e):
 def quitter(e):
         root.quit()
         #root.destroy()
-def hide_screen(e):
+def hide_screen(e): 
         root.overrideredirect(0)
         root.iconify
 
