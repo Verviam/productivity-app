@@ -9,8 +9,8 @@ root.configure(bg='white') # set window color
 
 #taskbar
 taskbar_border_color = Frame(root, background="black")
-taskbar = Listbox(root, selectbackground='black', bg='azure3', font=('Helvetica', 12), height=50, width=5)
-taskbar.place(x=0, y=500, height=800)
+taskbar = Listbox(root, selectbackground='black', bg='#073B3A', font=('Helvetica', 12), height=50, width=5)
+taskbar.place(x=-1, y=0)
 
 Label(root, text="To Do List", bg="white", font=("Comic Sans MS", 15), wraplength=300).place(x=50, y=30.5) #Edit font size and wrap length and place later
 
