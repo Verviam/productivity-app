@@ -26,15 +26,19 @@ title_bar.bind("<B1-Motion>", move_app)
 
 # custom title bar label
 title_label = Label(title_bar, text="Productivity", bg="#073B3A", fg="#21D375", font="Ebrima")
-title_label.pack(side=LEFT, pady=4)
+title_label.pack(side=LEFT, pady=4, padx=484)
 
-close_button = Label(title_bar, text=" X ", bg="#073B3A", fg="#21D375", relief="sunken", bd=1, font="Ebrima")
+#close button
+close_button = Label(title_bar, text=" X ", bg="#073B3A", fg="#21D375", font="Ebrima")
 close_button.pack(side=RIGHT, pady=4)
 close_button.bind("<Button-1>", quitter)
 
+#minimize button
+minimize_button = Label(title_bar, text=" X ", bg="#073B3A", fg="#21D375", font="Ebrima")
+minimize_button.pack(side=RIGHT, pady=4)
+minimize_button.bind("<Button-1>", quitter)
 
-close_button = Label(title_bar, text=" X ", bg="#073B3A", fg="#21D375", font="Ebrima")
-close_button.pack(side=RIGHT, pady=3)
+
 # HWND = windll.user32.GetParent(root.winfo_id())
 # title_bar_color = 0x00FF0000
 # title_text_color = 0x0000FF99
