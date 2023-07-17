@@ -7,13 +7,13 @@ root = Tk(className='Productivity') #create window and name
 root.geometry("1080x720") # set window size
 root.configure(bg='white') # set window color
 
-#custom title bar
+#custom title bar functions
 def start_drag(e):
-    # save the offset from the top-left corner of window
-    e.widget.offset = (e.x, e.y)
+        e.widget.offset = (e.x, e.y) # save the offset from the top-left corner of window
 def move_app(e):
-        root.geometry(f'+{e.x_root-e.widget.offset[0]}+{e.y_root-e.widget.offset[1]}')
+        root.geometry(f'+{e.x_root-e.widget.offset[0]}+{e.y_root-e.widget.offset[1]}') # calculate top-left corner of window based on the saved offset
 
+# custom title bar characteristics
 root.overrideredirect(True)
 title_bar = Frame(root, bg="#073B3A", relief="raised", bd=1)
 title_bar.pack(expand=1, fill=X)
@@ -21,8 +21,10 @@ title_bar.place(x=-1, y=-1)
 title_bar.bind("<Button-1>", start_drag)
 title_bar.bind("<B1-Motion>", move_app)
 
+# custom title bar label
 title_label = Label(title_bar, text="Productivity", bg="#073B3A", fg="#21D375", font="Ebrima")
 title_label.pack(side=LEFT, pady=3, padx=505)
+
 
 close_button = Label(title_bar, text=" X ", bg="#073B3A", fg="#21D375", font="Ebrima")
 close_button.pack(side=RIGHT, pady=3)
