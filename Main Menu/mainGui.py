@@ -29,7 +29,7 @@ title_label = Label(title_bar, text="Productivity", bg="#073B3A", fg="#21D375", 
 title_label.pack(side=LEFT, pady=4, padx=484)
 
 # adds icon to top left
-Image_icon = PhotoImage(file = "icon.png")
+Image_icon = PhotoImage(file = "productivity_icon.png")
 root.iconphoto(False, Image_icon)
 
 
