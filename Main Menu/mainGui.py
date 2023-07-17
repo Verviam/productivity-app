@@ -3,16 +3,21 @@ from PIL import Image,ImageTk
 from ctypes import windll, byref, sizeof, c_int
 import customtkinter as ctk
 
+# window setup
 root = Tk(className='Productivity') #create window and name
 root.geometry("1080x720") # set window size
 root.configure(bg='white') # set window color
 
-#taskbar
-taskbar_border_color = Frame(root, background="black")
-taskbar = Listbox(root, selectbackground='black', bg='#073B3A', font=('Helvetica', 12), height=50, width=5)
-taskbar.place(x=-1, y=0)
+# icon
+Image_icon = PhotoImage(file="productivity_icon.png")
+root.iconphoto(False, Image_icon)
 
-Label(root, text="To Do List", bg="white", font=("Comic Sans MS", 15), wraplength=300).place(x=50, y=30.5) #Edit font size and wrap length and place later
+#menu bar
+sideMenu = PhotoImage(file="menu_bar.png")
+Label(root, image =sideMenu).place(x=0, y=0)
+# change the background color of side menu and main frame of app
+
+Label(root, text="To Do List", bg="white", font=("Arial", 15), wraplength=300).place(x=50, y=30.5) #Edit font size and wrap length and place later
 
 tasks = Listbox(root, selectbackground='Gold', bg='Silver', font=('Helvetica', 12), height=12, width=25)
 scroller = Scrollbar(root, orient=VERTICAL, command=tasks.yview)
