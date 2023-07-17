@@ -1,0 +1,61 @@
+
+#custom title bar functions
+def start_drag(e):
+        e.widget.offset = (e.x, e.y) # save the offset from the top-left corner of window
+def move_app(e):
+        root.geometry(f'+{e.x_root-e.widget.offset[0]}+{e.y_root-e.widget.offset[1]}') # calculate top-left corner of window based on the saved offset7
+def quitter(e):
+        root.quit()
+        #root.destroy()
+def hide_screen(e): 
+        root.overrideredirect(0)
+        #root.iconify
+
+# custom title bar characteristics
+root.overrideredirect(True)
+title_bar = Frame(root, bg="#073B3A", relief="raised", bd=1)
+title_bar.pack(expand=1, fill=X)
+title_bar.place(x=50, y=-1)
+title_bar.bind("<Button-1>", start_drag)
+title_bar.bind("<B1-Motion>", move_app)
+
+# custom title bar label
+title_label = Label(title_bar, text="Productivity", bg="#073B3A", fg="#21D375", font="Ebrima")
+title_label.pack(side=LEFT, pady=4, padx=300) #
+
+# adds icon to top left
+logo_Img = Image.open("productivity_icon.png")
+logoImg_resize = logo_Img.resize((34, 26), Image.ANTIALIAS)
+logoImg = ImageTk.PhotoImage(logoImg_resize)
+
+# logoImg = ImageTk.PhotoImage(Image.open("productivity_icon.png"))
+logo = Label(root, image=logoImg, bg="#073B3A")
+logo.pack(side=LEFT,pady=4)
+logo.place(x=0, y=10)
+
+#close button
+close_button = Label(title_bar, text=" X ", bg="#073B3A", fg="#21D375", font="Ebrima")
+close_button.pack(side=RIGHT, pady=4)
+close_button.bind("<Button-1>", quitter)
+
+#minimize button
+minimize_button = Label(title_bar, text=" — ", bg="#073B3A", fg="#21D375", font="Ebrima")
+minimize_button.pack(side=RIGHT, pady=4)
+minimize_button.bind("<Button-1>", hide_screen)
+
+
+# HWND = windll.user32.GetParent(root.winfo_id())
+# title_bar_color = 0x00FF0000
+# title_text_color = 0x0000FF99
+
+# windll.dwmapi.DwmSetWindowAttribute(
+#     HWND,
+#     35,
+#     byref(c_int(title_bar_color)),
+#     sizeof(c_int))
+
+# windll.dwmapi.DwmSetWindowAttribute(
+#     HWND,
+#     36,
+#     byref(c_int(title_text_color)),
+#     sizeof(c_int))
