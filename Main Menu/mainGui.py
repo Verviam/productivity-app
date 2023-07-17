@@ -24,6 +24,6 @@ tasks.place(x=35, y=80)
 #home
 homeImg = ImageTk.PhotoImage(Image.open("home.png"))
 home = Label(root, image=homeImg, bg="white")
-home.pack(side=BOTTOM)
+home.pack(anchor=NW)
 
 root.mainloop()
