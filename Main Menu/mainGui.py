@@ -8,13 +8,17 @@ root.geometry("1080x720") # set window size
 root.configure(bg='white') # set window color
 
 #custom title bar
+def start_drag(e):
+    # save the offset from the top-left corner of window
+    e.widget.offset = (e.x, e.y)
 def move_app(e):
-        root.geometry(f'+{e.x_root}+{e.y_root}')
+        root.geometry(f'+{e.x_root-e.widget.offset[0]}+{e.y_root-e.widget.offset[1]}')
 
 root.overrideredirect(True)
 title_bar = Frame(root, bg="#073B3A", relief="raised", bd=1)
 title_bar.pack(expand=1, fill=X)
 title_bar.place(x=-1, y=-1)
+title_bar.bind("<Button-1>", start_drag)
 title_bar.bind("<B1-Motion>", move_app)
 
 title_label = Label(title_bar, text="Productivity", bg="#073B3A", fg="#21D375", font="Ebrima")
