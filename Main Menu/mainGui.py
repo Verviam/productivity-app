@@ -28,6 +28,12 @@ title_bar.bind("<B1-Motion>", move_app)
 title_label = Label(title_bar, text="Productivity", bg="#073B3A", fg="#21D375", font="Ebrima")
 title_label.pack(side=LEFT, pady=4, padx=484)
 
+# adds icon to top left
+Image_icon = PhotoImage(file = "icon.png")
+root.iconphoto(False, Image_icon)
+
+
+
 #close button
 close_button = Label(title_bar, text=" X ", bg="#073B3A", fg="#21D375", font="Ebrima")
 close_button.pack(side=RIGHT, pady=4)
