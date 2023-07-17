@@ -29,9 +29,6 @@ title_label = Label(title_bar, text="Productivity", bg="#073B3A", fg="#21D375", 
 title_label.pack(side=LEFT, pady=4, padx=100) #484
 
 # adds icon to top left
-logoImg = ImageTk.PhotoImage(Image.open("productivity_icon.png"))
-logo = Label(root, image=logoImg)
-logo.pack(side=LEFT,pady=0)
 Image_icon = PhotoImage(file = "productivity_icon.png")
 root.iconphoto(False, Image_icon)
 
