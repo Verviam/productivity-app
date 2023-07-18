@@ -23,6 +23,7 @@ class homePage(tk.Frame):
         toDoListButton = tk.Button(self, text="To Do List", font=("Arial", 15), command=lambda: controller.show_frame(toDoList))
         toDoListButton.place(x=700, y=320)
         # add commands for taskbar image click button
+        # make new file for __init__.py and call functions from init to main
 class toDoList(tk.Frame):
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
