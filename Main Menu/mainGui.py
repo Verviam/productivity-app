@@ -18,7 +18,7 @@ taskbar = Listbox(root, selectbackground='black', bg='#073B3A', fg="#073B3A", fo
 taskbar.place(x=-2, y=-3)
 
 #home
-homeImg = ImageTk.PhotoImage(Image.open("Image/home.png"))
+homeImg = ImageTk.PhotoImage(Image.open("Image/home_img.png"))
 home = Label(root, image=homeImg, bg="#073B3A")
 home.place(x=1, y=3)
 
@@ -33,12 +33,12 @@ schedule = Label(root, image=scheduleImg, bg="#073B3A")
 schedule.place(x=-1, y=123)
 
 #habits
-habitsImg = ImageTk.PhotoImage(Image.open("habits_img.png"))
+habitsImg = ImageTk.PhotoImage(Image.open("Image/habits_img.png"))
 habits = Label(root, image=habitsImg, bg="#073B3A")
 habits.place(x=-1, y=123)
 
 #notes
-notesImg = ImageTk.PhotoImage(Image.open("notes_img.png"))
+notesImg = ImageTk.PhotoImage(Image.open("Image/notes_img.png"))
 notes = Label(root, image=notesImg, bg="#073B3A")
 notes.place(x=-1, y=123)
 
