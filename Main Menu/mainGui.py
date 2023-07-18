@@ -15,17 +15,22 @@ root.iconphoto(False, Image_icon)
 #taskbar
 taskbar_border_color = Frame(root, background="black")
 taskbar = Listbox(root, selectbackground='black', bg='#073B3A', fg="#073B3A", font=('Helvetica', 12), height=50, width=7)
-taskbar.place(x=-2, y=0)
+taskbar.place(x=-2, y=-3)
 
 #home
-homeImg = ImageTk.PhotoImage(Image.open("home.png"))
+homeImg = ImageTk.PhotoImage(Image.open("home_img.png"))
 home = Label(root, image=homeImg, bg="#073B3A")
-home.place(x=-1, y=0)
+home.place(x=1, y=3)
 
 #home
 todolistImg = ImageTk.PhotoImage(Image.open("todolist_img.png"))
 todolist = Label(root, image=todolistImg, bg="#073B3A")
-todolist.place(x=-1, y=55)
+todolist.place(x=-1, y=58)
+
+#home
+scheduleImg = ImageTk.PhotoImage(Image.open("schedule_img.png"))
+schedule = Label(root, image=scheduleImg, bg="#073B3A")
+schedule.place(x=-1, y=123)
 
 # change the background color of side menu and main frame of app
 
