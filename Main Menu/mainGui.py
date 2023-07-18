@@ -29,8 +29,8 @@ tasks.config(yscrollcommand=scroller.set)
 tasks.place(x=35, y=80)
 
 #home
-# homeImg = ImageTk.PhotoImage(Image.open("home.png"))
-# home = Label(root, image=homeImg, bg="white")
-# home.pack(anchor=NW)
+homeImg = ImageTk.PhotoImage(Image.open("home.png"))
+home = Label(root, image=homeImg, bg="#073B3A")
+home.pack(anchor=NW)
 
 root.mainloop()
