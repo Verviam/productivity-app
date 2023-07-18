@@ -7,13 +7,13 @@ import customtkinter as ctk
 root = Tk(className='Productivity') #create window and name
 root.geometry("1080x720") # set window size
 root.configure(bg='#0B6E4F') # set window color
+root.state('zoomed', True)
 # icon
 Image_icon = PhotoImage(file="Image/productivity_icon.png")
 root.iconphoto(False, Image_icon)
 
 
-#taskbar
-taskbar_border_color = Frame(root, background="red")
+#taskbar 
 taskbar = Listbox(root, selectbackground='black', bg='#073B3A', fg="#073B3A", font=('Helvetica', 12), height=60, width=8)
 taskbar.place(x=-2, y=-3)
 
@@ -46,6 +46,7 @@ habits.place(x=int(5.5), y=253)
 notesImg = ImageTk.PhotoImage(Image.open("Image/notes_img.png"))
 notes = Label(root, image=notesImg, bg="#073B3A")
 notes.place(x=8, y=321)
+
 
 #timer
 timerImg = ImageTk.PhotoImage(Image.open("Image/timer_img.png"))
