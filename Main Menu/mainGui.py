@@ -6,41 +6,51 @@ import customtkinter as ctk
 # window setup
 root = Tk(className='Productivity') #create window and name
 root.geometry("1080x720") # set window size
-root.configure(bg='white') # set window color
+root.configure(bg='#0B6E4F') # set window color
 # icon
 Image_icon = PhotoImage(file="Image/productivity_icon.png")
 root.iconphoto(False, Image_icon)
 
 
 #taskbar
-taskbar_border_color = Frame(root, background="black")
-taskbar = Listbox(root, selectbackground='black', bg='#073B3A', fg="#073B3A", font=('Helvetica', 12), height=50, width=7)
+taskbar_border_color = Frame(root, background="red")
+taskbar = Listbox(root, selectbackground='black', bg='#073B3A', fg="#073B3A", font=('Helvetica', 12), height=60, width=8)
 taskbar.place(x=-2, y=-3)
+
+#logo
+productivityIcon = ImageTk.PhotoImage(Image.open("Image/productivity_icon.png"))
+productivity = Label(root, image=productivityIcon, bg="#073B3A")
+productivity.place(x=8, y=5)
 
 #home
 homeImg = ImageTk.PhotoImage(Image.open("Image/home_img.png"))
 home = Label(root, image=homeImg, bg="#073B3A")
-home.place(x=1, y=3)
+home.place(x=6, y=56)
 
-#home
+#todolist
 todolistImg = ImageTk.PhotoImage(Image.open("Image/todolist_img.png"))
 todolist = Label(root, image=todolistImg, bg="#073B3A")
-todolist.place(x=-1, y=55)
+todolist.place(x=int(5.5), y=116)
 
-#home
+#schedule
 scheduleImg = ImageTk.PhotoImage(Image.open("Image/schedule_img.png"))
 schedule = Label(root, image=scheduleImg, bg="#073B3A")
-schedule.place(x=-1, y=123)
+schedule.place(x=int(5.5), y=183)
 
 #habits
 habitsImg = ImageTk.PhotoImage(Image.open("Image/habits_img.png"))
 habits = Label(root, image=habitsImg, bg="#073B3A")
-habits.place(x=-1, y=123)
+habits.place(x=int(5.5), y=253)
 
 #notes
 notesImg = ImageTk.PhotoImage(Image.open("Image/notes_img.png"))
 notes = Label(root, image=notesImg, bg="#073B3A")
-notes.place(x=-1, y=123)
+notes.place(x=8, y=321)
+
+#timer
+timerImg = ImageTk.PhotoImage(Image.open("Image/timer_img.png"))
+timer = Label(root, image=timerImg, bg="#073B3A")
+timer.place(x=int(5.5), y=385)
 
 # change the background color of side menu and main frame of app
 
