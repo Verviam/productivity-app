@@ -8,7 +8,7 @@ root = Tk(className='Productivity') #create window and name
 root.geometry("1080x720") # set window size
 root.configure(bg='white') # set window color
 # icon
-Image_icon = PhotoImage(file="productivity_icon.png")
+Image_icon = PhotoImage(file="Image/productivity_icon.png")
 root.iconphoto(False, Image_icon)
 
 
@@ -18,17 +18,17 @@ taskbar = Listbox(root, selectbackground='black', bg='#073B3A', fg="#073B3A", fo
 taskbar.place(x=-2, y=-3)
 
 #home
-homeImg = ImageTk.PhotoImage(Image.open("home_img.png"))
+homeImg = ImageTk.PhotoImage(Image.open("Image/home.png"))
 home = Label(root, image=homeImg, bg="#073B3A")
 home.place(x=1, y=3)
 
-#todolist
-todolistImg = ImageTk.PhotoImage(Image.open("todolist_img.png"))
+#home
+todolistImg = ImageTk.PhotoImage(Image.open("Image/todolist_img.png"))
 todolist = Label(root, image=todolistImg, bg="#073B3A")
-todolist.place(x=-1, y=58)
+todolist.place(x=-1, y=55)
 
-#schedule
-scheduleImg = ImageTk.PhotoImage(Image.open("schedule_img.png"))
+#home
+scheduleImg = ImageTk.PhotoImage(Image.open("Image/schedule_img.png"))
 schedule = Label(root, image=scheduleImg, bg="#073B3A")
 schedule.place(x=-1, y=123)
 
