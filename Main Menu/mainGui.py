@@ -22,15 +22,25 @@ homeImg = ImageTk.PhotoImage(Image.open("home_img.png"))
 home = Label(root, image=homeImg, bg="#073B3A")
 home.place(x=1, y=3)
 
-#home
+#todolist
 todolistImg = ImageTk.PhotoImage(Image.open("todolist_img.png"))
 todolist = Label(root, image=todolistImg, bg="#073B3A")
 todolist.place(x=-1, y=58)
 
-#home
+#schedule
 scheduleImg = ImageTk.PhotoImage(Image.open("schedule_img.png"))
 schedule = Label(root, image=scheduleImg, bg="#073B3A")
 schedule.place(x=-1, y=123)
+
+#habits
+habitsImg = ImageTk.PhotoImage(Image.open("habits_img.png"))
+habits = Label(root, image=habitsImg, bg="#073B3A")
+habits.place(x=-1, y=123)
+
+#notes
+notesImg = ImageTk.PhotoImage(Image.open("notes_img.png"))
+notes = Label(root, image=notesImg, bg="#073B3A")
+notes.place(x=-1, y=123)
 
 # change the background color of side menu and main frame of app
 
