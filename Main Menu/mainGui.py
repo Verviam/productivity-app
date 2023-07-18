@@ -18,7 +18,7 @@ taskbar = Listbox(root, selectbackground='black', bg='#073B3A', fg="#073B3A", fo
 taskbar.place(x=-2, y=-3)
 
 #home
-homeImg = ImageTk.PhotoImage(Image.open("Image/home.png"))
+homeImg = ImageTk.PhotoImage(Image.open("Image/home_img.png"))
 home = Label(root, image=homeImg, bg="#073B3A")
 home.place(x=1, y=3)
 
