@@ -33,12 +33,12 @@ schedule = Label(root, image=scheduleImg, bg="#073B3A")
 schedule.place(x=-1, y=123)
 
 #habits
-habitsImg = ImageTk.PhotoImage(Image.open("habits_img.png"))
+habitsImg = ImageTk.PhotoImage(Image.open("Image/habits_img.png"))
 habits = Label(root, image=habitsImg, bg="#073B3A")
 habits.place(x=-1, y=123)
 
 #notes
-notesImg = ImageTk.PhotoImage(Image.open("notes_img.png"))
+notesImg = ImageTk.PhotoImage(Image.open("Image/notes_img.png"))
 notes = Label(root, image=notesImg, bg="#073B3A")
 notes.place(x=-1, y=123)
 
