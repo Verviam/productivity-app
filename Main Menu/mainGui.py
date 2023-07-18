@@ -22,6 +22,11 @@ homeImg = ImageTk.PhotoImage(Image.open("home.png"))
 home = Label(root, image=homeImg, bg="#073B3A")
 home.place(x=-1, y=0)
 
+#home
+todolistImg = ImageTk.PhotoImage(Image.open("todolist_img.png"))
+todolist = Label(root, image=todolistImg, bg="#073B3A")
+todolist.place(x=-1, y=55)
+
 # change the background color of side menu and main frame of app
 
 Label(root, text="To Do List", bg="white", font=("Arial", 15), wraplength=300).place(x=150, y=30.5) #Edit font size and wrap length and place later
