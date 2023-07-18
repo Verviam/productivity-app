@@ -12,9 +12,11 @@ root.configure(bg='white') # set window color
 Image_icon = PhotoImage(file="productivity_icon.png")
 root.iconphoto(False, Image_icon)
 
-#menu bar
-sideMenu = PhotoImage(file="menu_bar.png")
-Label(root, image =sideMenu).place(x=0, y=0)
+#taskbar
+taskbar_border_color = Frame(root, background="black")
+taskbar = Listbox(root, selectbackground='black', bg='#073B3A', font=('Helvetica', 12), height=50, width=5)
+taskbar.place(x=-1, y=0)
+
 # change the background color of side menu and main frame of app
 
 Label(root, text="To Do List", bg="white", font=("Arial", 15), wraplength=300).place(x=50, y=30.5) #Edit font size and wrap length and place later
@@ -27,8 +29,8 @@ tasks.config(yscrollcommand=scroller.set)
 tasks.place(x=35, y=80)
 
 #home
-homeImg = ImageTk.PhotoImage(Image.open("home.png"))
-home = Label(root, image=homeImg, bg="white")
-home.pack(anchor=NW)
+# homeImg = ImageTk.PhotoImage(Image.open("home.png"))
+# home = Label(root, image=homeImg, bg="white")
+# home.pack(anchor=NW)
 
 root.mainloop()
