@@ -16,9 +16,10 @@ root.iconphoto(False, Image_icon)
 taskbar_border_color = Frame(root, background="black")
 taskbar = Listbox(root, selectbackground='black', bg='#073B3A', font=('Helvetica', 12), height=50, width=5)
 taskbar.place(x=-1, y=0)
+
 #home
 homeImg = ImageTk.PhotoImage(Image.open("home.png"))
-home = Label(root, image=homeImg, bg="white")
+home = Label(root, image=homeImg, bg="#073B3A")
 home.pack(anchor=NW)
 
 # change the background color of side menu and main frame of app
@@ -31,10 +32,5 @@ scroller.place(x=260, y=80, height=232)
 
 tasks.config(yscrollcommand=scroller.set)
 tasks.place(x=35, y=80)
-
-#home
-# homeImg = ImageTk.PhotoImage(Image.open("home.png"))
-# home = Label(root, image=homeImg, bg="white")
-# home.pack(anchor=NW)
 
 root.mainloop()
