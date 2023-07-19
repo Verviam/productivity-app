@@ -76,16 +76,16 @@ class main(tk.Tk):
     def __init__(self, *args, **kwargs):
         tk.Tk.__init__(self, *args, **kwargs)
 
-        window = tk.Frame(self)
-        window.pack()
+        root = tk.Frame(self)
+        root.pack()
 
         # window setup
         root = tk.Tk(className='Productivity') #create window and name
         root.geometry("1080x720") # set window size
         root.configure(bg='#0B6E4F') # set window color
         # icon
-        Image_icon = tk.PhotoImage(file="Image/productivity_icon.png")
-        root.iconphoto(False, Image_icon)
+        imageIcon = ImageTk.PhotoImage(Image.open("Image/productivity_icon.png"))
+        root.iconphoto(False, imageIcon)
 
         #taskbar 
         taskbar = tk.Listbox(root, selectbackground='black', bg='#073B3A', fg="#073B3A", font=('Helvetica', 12), height=60, width=8)
@@ -141,7 +141,7 @@ class main(tk.Tk):
 
         self.frames = {}
         for P in (homePage, toDoList, habits, schedule, notes):
-            page = P(window, self)
+            page = P(root, self)
             self.frames[P] = page
             page.grid(row = 0, column = 0, sticky="nsew")
 
@@ -151,5 +151,5 @@ class main(tk.Tk):
             frame = self.frames[page]
             frame.tkraise()
 
-root = main()
-root.mainloop()
+main = main()
+main.mainloop()
