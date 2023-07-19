@@ -46,6 +46,17 @@ notesImg = ImageTk.PhotoImage(Image.open("Image/notes_img.png"))
 notes = Label(root, image=notesImg, bg="#073B3A")
 notes.place(x=19, y=251)
 
+#arrows
+arrowsImg = ImageTk.PhotoImage(Image.open("Image/right_arrows_img.png"))
+arrows = Label(root, image=arrowsImg, bg="#073B3A")
+arrows.place(x=23, y=930)
+
+#settings
+settingsImg = ImageTk.PhotoImage(Image.open("Image/settings_img.png"))
+settings = Label(root, image=settingsImg, bg="#073B3A")
+settings.place(x=19, y=970)
+
+
 
 #timer
 timerImg = ImageTk.PhotoImage(Image.open("Image/timer_img.png"))
