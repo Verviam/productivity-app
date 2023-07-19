@@ -73,6 +73,7 @@ class notes(tk.Frame):
         backButton.place(x=1000, y=0)
 
 class main(tk.Tk):
+    # productivityIcon = None
     def __init__(self, *args, **kwargs):
         tk.Tk.__init__(self, *args, **kwargs)
 
@@ -83,9 +84,12 @@ class main(tk.Tk):
         root = tk.Tk(className='Productivity') #create window and name
         root.geometry("1080x720") # set window size
         root.configure(bg='#0B6E4F') # set window color
+        
         # icon
-        imageIcon = ImageTk.PhotoImage(Image.open("Image/productivity_icon.png"))
-        root.iconphoto(False, imageIcon)
+        icon = PhotoImage("Image/productivity_icon.ico")
+        self.iconbitmap("Image/productivity_icon.ico")
+        # self.productivityIcon = ImageTk.PhotoImage(Image.open("Image/productivity_icon.png"))
+        # root.iconphoto(False, self.productivityIcon)
 
         #taskbar 
         taskbar = tk.Listbox(root, selectbackground='black', bg='#073B3A', fg="#073B3A", font=('Helvetica', 12), height=60, width=8)
