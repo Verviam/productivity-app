@@ -67,13 +67,14 @@ timer.place(x=13, y=298)
 
 # change the background color of side menu and main frame of app
 
-Label(root, text="Hello Muscle Cow", bg="#0B6E4F", font=("Helvetica", 25), wraplength=300).place(x=150, y=30.5) #Edit font size and wrap length and place later
+Label(root, text="Hello Muscle Cow", bg="#0B6E4F", fg ="#21D375", font=("Helvetica", 25), wraplength=300).place(x=85, y=10) #Edit font size and wrap length and place later
 
 tasks = Listbox(root, selectbackground='Gold', bg='Silver', font=('Helvetica', 12), height=12, width=25)
-scroller = Scrollbar(root, orient=VERTICAL, command=tasks.yview)
-scroller.place(x=360, y=80, height=232)
-
-tasks.config(yscrollcommand=scroller.set)
 tasks.place(x=135, y=80)
+
+# scroller = Scrollbar(root, orient=VERTICAL, command=tasks.yview)
+# scroller.place(x=360, y=80, height=232)
+
+# tasks.config(yscrollcommand=scroller.set)
 
 root.mainloop()
