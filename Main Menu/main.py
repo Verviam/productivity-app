@@ -38,19 +38,39 @@ class toDoList(tk.Frame):
         topLabel = tk.Label(self, text="Here is your To Do List", font=("Playfair Display", 30))
         topLabel.place(x=500, y=600)
 
+        backButton = tk.Button(self, text="Back Arrow Key", font=("Arial, 15"), command=lambda: controller.show_frame(homePage))
+        backButton.place(x=1000, y=0)
         
-
-
 class habits(tk.Frame):
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
 
-class schedule(tk.Frame):
+        topLabel = tk.Label(self, text="Here are your habits", font=("Playfair Display", 30))
+        topLabel.place(x=500, y=600)
 
+        backButton = tk.Button(self, text="Back Arrow Key", font=("Arial, 15"), command=lambda: controller.show_frame(homePage))
+        backButton.place(x=1000, y=0)
+
+class schedule(tk.Frame):
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
+        
+        topLabel = tk.Label(self, text="Schedule", font=("Playfair Display", 40))
+        topLabel.place(x=500, y=600)
+
+        backButton = tk.Button(self, text="Back Arrow Key", font=("Arial, 15"), command=lambda: controller.show_frame(homePage))
+        backButton.place(x=1000, y=0)
 
 class notes(tk.Frame):
 
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
+
+        topLabel = tk.Label(self, text="Notes", font=("Playfair Display", 30))
+        topLabel.place(x=500, y=600)
+
+        backButton = tk.Button(self, text="Back Arrow Key", font=("Arial, 15"), command=lambda: controller.show_frame(homePage))
+        backButton.place(x=1000, y=0)
+
+class root(tk.Tk):
+    
