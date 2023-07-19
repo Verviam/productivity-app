@@ -2,6 +2,8 @@ from tkinter import *
 from PIL import Image,ImageTk
 from ctypes import windll, byref, sizeof, c_int
 import customtkinter as ctk
+# make images scale with window size function
+
 
 # window setup
 root = Tk(className='Productivity') #create window and name
