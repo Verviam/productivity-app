@@ -24,37 +24,37 @@ productivity.place(x=8, y=5)
 #home
 homeImg = ImageTk.PhotoImage(Image.open("Image/home_img.png"))
 home = Label(root, image=homeImg, bg="#073B3A")
-home.place(x=6, y=56)
+home.place(x=16, y=56)
 
 #todolist
 todolistImg = ImageTk.PhotoImage(Image.open("Image/todolist_img.png"))
 todolist = Label(root, image=todolistImg, bg="#073B3A")
-todolist.place(x=int(5.5), y=116)
+todolist.place(x=int(14.7), y=100)
 
 #schedule
 scheduleImg = ImageTk.PhotoImage(Image.open("Image/schedule_img.png"))
 schedule = Label(root, image=scheduleImg, bg="#073B3A")
-schedule.place(x=int(5.5), y=183)
+schedule.place(x=int(14.7), y=150)
 
 #habits
 habitsImg = ImageTk.PhotoImage(Image.open("Image/habits_img.png"))
 habits = Label(root, image=habitsImg, bg="#073B3A")
-habits.place(x=int(5.5), y=253)
+habits.place(x=int(14.7), y=201)
 
 #notes
 notesImg = ImageTk.PhotoImage(Image.open("Image/notes_img.png"))
 notes = Label(root, image=notesImg, bg="#073B3A")
-notes.place(x=8, y=321)
+notes.place(x=19, y=251)
 
 
 #timer
 timerImg = ImageTk.PhotoImage(Image.open("Image/timer_img.png"))
 timer = Label(root, image=timerImg, bg="#073B3A")
-timer.place(x=int(5.5), y=385)
+timer.place(x=13, y=298)
 
 # change the background color of side menu and main frame of app
 
-Label(root, text="To Do List", bg="white", font=("Arial", 15), wraplength=300).place(x=150, y=30.5) #Edit font size and wrap length and place later
+Label(root, text="Hello Muscle Cow", bg="#0B6E4F", font=("Helvetica", 25), wraplength=300).place(x=150, y=30.5) #Edit font size and wrap length and place later
 
 tasks = Listbox(root, selectbackground='Gold', bg='Silver', font=('Helvetica', 12), height=12, width=25)
 scroller = Scrollbar(root, orient=VERTICAL, command=tasks.yview)
