@@ -96,16 +96,14 @@ Label(root, text="Timler", bg="#073B3A", fg ="#21D375", font=("Cambria", 22), wr
 settingsImg = ImageTk.PhotoImage(Image.open("Image/settings_img.png"))
 settings = Label(root, image=settingsImg, bg="#073B3A")
 settings.place(x=230, y=970)
-
-#name
-Label(root, text="Muscle Cow", bg="#073B3A", fg ="#21D375", font=("Cambria", 100), wraplength=300).place(x=15, y=969)
+Label(root, text="Muscle Cow", bg="#073B3A", fg ="#21D375", font=("Cambria", 20), wraplength=300).place(x=15, y=969)
 
 # change the background color of side menu and main frame of app
 
-Label(root, text="Hello Muscle Cow", bg="#0B6E4F", fg ="#21D375", font=("Cambria", 25), wraplength=300).place(x=300, y=10) #Edit font size and wrap length and place later
+Label(root, text="Hello Muscle Cow", bg="#0B6E4F", fg ="#21D375", font=("Cambria", 50), wraplength=1000).place(x=300, y=10) #Edit font size and wrap length and place later
 
-tasks = Listbox(root, selectbackground='Gold', bg='Silver', font=('Cambria', 12), height=12, width=25)
-tasks.place(x=300, y=80)
+# tasks = Listbox(root, selectbackground='Gold', bg='Silver', font=('Cambria', 12), height=12, width=25)
+# tasks.place(x=300, y=80)
 
 
 
