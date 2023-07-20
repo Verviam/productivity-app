@@ -1,9 +1,9 @@
 from tkinter import *
+from tkinter import ttk
 from PIL import Image,ImageTk
 from ctypes import windll, byref, sizeof, c_int
 import customtkinter as ctk
 # make images scale with window size function
-
 
 # window setup
 root = Tk(className='Productivity') #create window and name
@@ -13,6 +13,33 @@ root.configure(bg='#0B6E4F') # set window color
 Image_icon = PhotoImage(file="Image/productivity_icon.png")
 root.iconphoto(False, Image_icon)
 
+#scrollbar: All Below
+# Create A Main frame
+main_frame = Frame(root)
+main_frame.pack(fill=BOTH, expand=1)
+
+# Create A Canvas
+my_canvas = Canvas(main_frame)
+my_canvas.pack(side=LEFT, fill=BOTH, expand=1)
+my_canvas.configure(bg='#0B6E4F')
+
+# Add A Scrollbars to Canvas
+scrollbar = ttk.Scrollbar(main_frame, orient=VERTICAL, command=my_canvas.yview)
+scrollbar.pack(side=RIGHT, fill=Y)
+
+# Configure the canvas
+my_canvas.configure(yscrollcommand=scrollbar.set)
+my_canvas.bind("<Configure>", lambda e: my_canvas.config(scrollregion=my_canvas.bbox("all"))) 
+
+# Create Another Frame INSIDE the Canvas
+second_frame = Frame(my_canvas)
+
+# Add that New Frame a Window In The Canvas
+my_canvas.create_window((0,0),window=second_frame, anchor="nw")
+#scrollbar: All Above
+
+for i in range(101):
+    idk = Button(second_frame, text=f'{i}').grid(row=i, column=0, pady=10, padx=100)
 
 #taskbar 
 taskbar = Listbox(root, selectbackground='black', bg='#073B3A', fg="#073B3A", font=('Helvetica', 12), height=60, width=8)
@@ -72,8 +99,11 @@ Label(root, text="Hello Muscle Cow", bg="#0B6E4F", fg ="#21D375", font=("Helveti
 tasks = Listbox(root, selectbackground='Gold', bg='Silver', font=('Helvetica', 12), height=12, width=25)
 tasks.place(x=135, y=80)
 
-hehehehaha = print("yewrhbjfwhbkjfubsiuafhahiuf")
-hehehehaha.place(x=500, y=500)
+
+
+
+
+
 
 # scroller = Scrollbar(root, orient=VERTICAL, command=tasks.yview)
 # scroller.place(x=360, y=80, height=232)
