@@ -72,8 +72,7 @@ Label(root, text="Hello Muscle Cow", bg="#0B6E4F", fg ="#21D375", font=("Helveti
 tasks = Listbox(root, selectbackground='Gold', bg='Silver', font=('Helvetica', 12), height=12, width=25)
 tasks.place(x=135, y=80)
 
-hehehehaha = print("yewrhbjfwhbkjfubsiuafhahiuf")
-hehehehaha.place(x=500, y=500)
+
 
 # scroller = Scrollbar(root, orient=VERTICAL, command=tasks.yview)
 # scroller.place(x=360, y=80, height=232)
