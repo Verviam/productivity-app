@@ -98,7 +98,7 @@ settings = Label(root, image=settingsImg, bg="#073B3A")
 settings.place(x=230, y=970)
 
 #name
-Label(root, text="Muscle Cow", bg="#073B3A", fg ="#21D375", font=("Cambria", 20), wraplength=300).place(x=15, y=969)
+Label(root, text="Muscle Cow", bg="#073B3A", fg ="#21D375", font=("Cambria", 100), wraplength=300).place(x=15, y=969)
 
 # change the background color of side menu and main frame of app
 
