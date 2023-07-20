@@ -38,8 +38,8 @@ second_frame = Frame(my_canvas)
 my_canvas.create_window((0,0),window=second_frame, anchor="nw")
 #scrollbar: All Above
 
-for i in range(101):
-    idk = Button(second_frame, text=f'{i}').grid(row=i, column=0, pady=10, padx=100)
+#for i in range(101):
+    #idk = Button(second_frame, text=f'{i}').grid(row=i, column=0, pady=10, padx=100)
 
 #taskbar 
 taskbar = Listbox(root, selectbackground='black', bg='#073B3A', fg="#073B3A", font=('Helvetica', 12), height=60, width=8)
