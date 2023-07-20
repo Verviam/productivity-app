@@ -67,7 +67,7 @@ Label(root, text="Todolist", bg="#073B3A", fg ="#21D375", font=("Cambria", 19), 
 scheduleImg = ImageTk.PhotoImage(Image.open("Image/schedule_img.png"))
 schedule = Label(root, image=scheduleImg, bg="#073B3A")
 schedule.place(x=int(14.7), y=150)
-Label(root, text="Schedule", bg="#073B3A", fg ="#21D375", font=("Cambria ", 17), wraplength=300).place(x=80, y=160)
+Label(root, text="Schedule", bg="#073B3A", fg ="#21D375", font=("Cambria ", int(17.5)), wraplength=300).place(x=80, y=160)
 
 #habits
 habitsImg = ImageTk.PhotoImage(Image.open("Image/habits_img.png"))
