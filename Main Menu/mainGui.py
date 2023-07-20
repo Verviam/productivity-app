@@ -7,8 +7,9 @@ import customtkinter as ctk
 
 # window setup
 root = Tk(className='Productivity') #create window and name
-root.geometry("1080x720") # set window size
+#root.geometry("1080x720") # set window size
 root.configure(bg='#0B6E4F') # set window color
+root.state("zoomed")
 # icon
 Image_icon = PhotoImage(file="Image/productivity_icon.png")
 root.iconphoto(False, Image_icon)
@@ -42,7 +43,7 @@ my_canvas.create_window((0,0),window=second_frame, anchor="nw")
     #idk = Button(second_frame, text=f'{i}').grid(row=i, column=0, pady=10, padx=100)
 
 #taskbar 
-taskbar = Listbox(root, selectbackground='black', bg='#073B3A', fg="#073B3A", font=('Helvetica', 12), height=60, width=8)
+taskbar = Listbox(root, selectbackground='black', bg='#073B3A', fg="#073B3A", font=('Helvetica', 12), height=60, width=30) #8
 taskbar.place(x=-2, y=-3)
 
 #logo
@@ -54,50 +55,57 @@ productivity.place(x=8, y=5)
 homeImg = ImageTk.PhotoImage(Image.open("Image/home_img.png"))
 home = Label(root, image=homeImg, bg="#073B3A")
 home.place(x=16, y=56)
+Label(root, text="Home", bg="#073B3A", fg ="#21D375", font=("Cambria", 20), wraplength=300).place(x=76, y=56)
 
 #todolist
-todolistImg = ImageTk.PhotoImage(Image.open("Image/todolist_img.png"))
+todolistImg = ImageTk.PhotoImage(Image.open ("Image/todolist_img.png"))
 todolist = Label(root, image=todolistImg, bg="#073B3A")
 todolist.place(x=int(14.7), y=100)
+Label(root, text="Todolist", bg="#073B3A", fg ="#21D375", font=("Cambria", 19), wraplength=300).place(x=int(74.7), y=103)
 
 #schedule
 scheduleImg = ImageTk.PhotoImage(Image.open("Image/schedule_img.png"))
 schedule = Label(root, image=scheduleImg, bg="#073B3A")
 schedule.place(x=int(14.7), y=150)
+Label(root, text="Schedule", bg="#073B3A", fg ="#21D375", font=("Cambria ", 17), wraplength=300).place(x=int(74.7), y=160)
 
 #habits
 habitsImg = ImageTk.PhotoImage(Image.open("Image/habits_img.png"))
 habits = Label(root, image=habitsImg, bg="#073B3A")
 habits.place(x=int(14.7), y=201)
+Label(root, text="Habits", bg="#073B3A", fg ="#21D375", font=("Cambria", 19), wraplength=300).place(x=int(74.7), y=205)
 
 #notes
 notesImg = ImageTk.PhotoImage(Image.open("Image/notes_img.png"))
 notes = Label(root, image=notesImg, bg="#073B3A")
 notes.place(x=19, y=251)
-
-#arrows
-arrowsImg = ImageTk.PhotoImage(Image.open("Image/right_arrows_img.png"))
-arrows = Label(root, image=arrowsImg, bg="#073B3A")
-arrows.place(x=23, y=930)
-
-#settings
-settingsImg = ImageTk.PhotoImage(Image.open("Image/settings_img.png"))
-settings = Label(root, image=settingsImg, bg="#073B3A")
-settings.place(x=19, y=970)
-
-
+Label(root, text="Notes", bg="#073B3A", fg ="#21D375", font=("Cambria", 19), wraplength=300).place(x=79, y=253)
 
 #timer
 timerImg = ImageTk.PhotoImage(Image.open("Image/timer_img.png"))
 timer = Label(root, image=timerImg, bg="#073B3A")
 timer.place(x=13, y=298)
+Label(root, text="Timler", bg="#073B3A", fg ="#21D375", font=("Cambria", 22), wraplength=300).place(x=73, y=298)
+
+#arrows
+# arrowsImg = ImageTk.PhotoImage(Image.open("Image/right_arrows_img.png"))
+# arrows = Label(root, image=arrowsImg, bg="#073B3A")
+# arrows.place(x=23, y=930)
+
+#settings
+settingsImg = ImageTk.PhotoImage(Image.open("Image/settings_img.png"))
+settings = Label(root, image=settingsImg, bg="#073B3A")
+settings.place(x=230, y=970)
+
+#name
+Label(root, text="Muscle Cow", bg="#073B3A", fg ="#21D375", font=("Cambria", 20), wraplength=300).place(x=15, y=969)
 
 # change the background color of side menu and main frame of app
 
-Label(root, text="Hello Muscle Cow", bg="#0B6E4F", fg ="#21D375", font=("Helvetica", 25), wraplength=300).place(x=85, y=10) #Edit font size and wrap length and place later
+Label(root, text="Hello Muscle Cow", bg="#0B6E4F", fg ="#21D375", font=("Cambria", 25), wraplength=300).place(x=300, y=10) #Edit font size and wrap length and place later
 
-tasks = Listbox(root, selectbackground='Gold', bg='Silver', font=('Helvetica', 12), height=12, width=25)
-tasks.place(x=135, y=80)
+tasks = Listbox(root, selectbackground='Gold', bg='Silver', font=('Cambria', 12), height=12, width=25)
+tasks.place(x=300, y=80)
 
 
 
