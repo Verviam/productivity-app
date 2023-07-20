@@ -79,10 +79,13 @@ class root(tk.Tk):
         root = tk.Frame(self)
         root.pack()
         
-        # window setup
-        root = tk.Tk(className='Productivity') #create window and name
-        root.geometry("1080x720") # set window size
-        root.configure(bg='#0B6E4F') # set window color
+        root.grid_rowconfigure(0, minsize = 2000)
+        root.grid_columnconfigure(0, minsize = 2000)
+        
+        # # window setup
+        # root = tk.Tk(className='Productivity') #create window and name
+        # root.geometry("1080x720") # set window size
+        # root.configure(bg='#0B6E4F') # set window color
 
 
         self.frames = {}
