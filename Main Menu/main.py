@@ -4,14 +4,60 @@ from tkinter import messagebox
 from PIL import Image, ImageTk
 
 root = tk.Tk()
-root.geometry('700x600')
+root.geometry('1024x768')
+root.resizable(False, False)
 root.title('Productivity')
+
+# icon
+Image_icon = tk.PhotoImage(file="Image/productivity_icon.png")
+root.iconphoto(False, Image_icon)
 
 optionsMenu = tk.Frame(root, bg='#073B3A') 
 
+# Home Image Button
+homeImg = ImageTk.PhotoImage(Image.open("Image/home_img.png"))
+homeButton = tk.Button(optionsMenu, image = homeImg)
+homeButton.place(x=10, y=50)
+
+# add text and image to button using canva and make background light green or https://www.geeksforgeeks.org/python-add-image-on-a-tkinter-button/
+
+
+# To Do List Button
+todoListImg = ImageTk.PhotoImage(Image.open("Image/todolist_img.png"))
+todoListButton = tk.Button(optionsMenu, image = todoListImg)
+todoListButton.place(x=10, y=150)
+
+
+# Schedule Button
+scheduleImg = ImageTk.PhotoImage(Image.open("Image/schedule_img.png"))
+scheduleButton = tk.Button(optionsMenu, image = scheduleImg)
+scheduleButton.place(x=10, y=250)
+
+
+# Habits Button
+habitsImg = ImageTk.PhotoImage(Image.open("Image/habits_img.png"))
+habitsButton = tk.Button(optionsMenu, image = habitsImg)
+habitsButton.place(x=10, y=350)
+
+# Notes Button
+notesImg = ImageTk.PhotoImage(Image.open("Image/notes_img.png"))
+notesButton = tk.Button(optionsMenu, image = notesImg)
+notesButton.place(x=10, y=450)
+
+# Timer Button
+timerImg = ImageTk.PhotoImage(Image.open("Image/timer_img.png"))
+timerButton = tk.Button(optionsMenu, image = timerImg)
+timerButton.place(x=10, y=550)
+
+# Settings Button
+settingsImg = ImageTk.PhotoImage(Image.open("Image/settings_img.png"))
+settingsButton = tk.Button(optionsMenu, image = settingsImg)
+settingsButton.place(x=10, y=700)
+
+
 optionsMenu.pack(side=tk.LEFT)
 optionsMenu.pack_propagate(False)
-optionsMenu.configure(width=150, height=2000) 
+optionsMenu.configure(width=200, height=2000) 
 
 homePage = tk.Frame(root, bg='#0B6E4F')
 homePage.pack(side=tk.LEFT)
@@ -114,66 +160,8 @@ class root(tk.Tk):
 
 
 
-# # icon
-# Image_icon = tk.PhotoImage(file="Image/productivity_icon.png")
-# root.iconphoto(False, Image_icon)
 
 
-# #taskbar 
-# taskbar = tk.Listbox(root, selectbackground='black', bg='#073B3A', fg="#073B3A", font=('Helvetica', 12), height=60, width=8)
-# taskbar.place(x=-2, y=-3)
-
-# #logo
-# productivityIcon = ImageTk.PhotoImage(Image.open("Image/productivity_icon.png"))
-# productivity = tk.Label(root, image=productivityIcon, bg="#073B3A")
-# productivity.place(x=8, y=5)
-
-# #home
-# homeImg = ImageTk.PhotoImage(Image.open("Image/home_img.png"))
-# home = tk.Label(root, image=homeImg, bg="#073B3A")
-# home.place(x=16, y=56)
-
-# #todolist
-# todolistImg = ImageTk.PhotoImage(Image.open("Image/todolist_img.png"))
-# todolist = tk.Label(root, image=todolistImg, bg="#073B3A")
-# todolist.place(x=int(14.7), y=100)
-
-# #schedule
-# scheduleImg = ImageTk.PhotoImage(Image.open("Image/schedule_img.png"))
-# schedule = tk.Label(root, image=scheduleImg, bg="#073B3A")
-# schedule.place(x=int(14.7), y=150)
-
-# #habits
-# habitsImg = ImageTk.PhotoImage(Image.open("Image/habits_img.png"))
-# habits = tk.Label(root, image=habitsImg, bg="#073B3A")
-# habits.place(x=int(14.7), y=201)
-
-# #notes
-# notesImg = ImageTk.PhotoImage(Image.open("Image/notes_img.png"))
-# notes = tk.Label(root, image=notesImg, bg="#073B3A")
-# notes.place(x=19, y=251)
-
-# #arrows
-# arrowsImg = ImageTk.PhotoImage(Image.open("Image/right_arrows_img.png"))
-# arrows = tk.Label(root, image=arrowsImg, bg="#073B3A")
-# arrows.place(x=23, y=930)
-
-# #settings
-# settingsImg = ImageTk.PhotoImage(Image.open("Image/settings_img.png"))
-# settings = tk.Label(root, image=settingsImg, bg="#073B3A")
-# settings.place(x=19, y=970)
-
-# #timer
-# timerImg = ImageTk.PhotoImage(Image.open("Image/timer_img.png"))
-# timer = tk.Label(root, image=timerImg, bg="#073B3A")
-# timer.place(x=13, y=298)
-
-# # change the background color of side menu and root frame of app
-
-# tk.Label(root, text="Hello Muscle Cow", bg="#0B6E4F", fg ="#21D375", font=("Helvetica", 25), wraplength=300).place(x=85, y=10) #Edit font size and wrap length and place later
-
-# tasks = tk.Listbox(root, selectbackground='Gold', bg='Silver', font=('Helvetica', 12), height=12, width=25)
-# tasks.place(x=135, y=80)
 
 
 root = root()
