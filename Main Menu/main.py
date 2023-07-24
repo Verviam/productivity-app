@@ -4,14 +4,24 @@ from tkinter import messagebox
 from PIL import Image, ImageTk
 
 root = tk.Tk()
-root.geometry('700x600')
-root.title('Productivity')
+root.geometry('1024x768')
+root.resizable(False, False)
 
 optionsMenu = tk.Frame(root, bg='#073B3A') 
 
+homeImg = ImageTk.PhotoImage(Image.open("Image/home_img.png"))
+homeButton = tk.Button(optionsMenu, text='Home', font=('Cambria', 20), image = homeImg)
+# add text and image to button using canva and make background light green
+# place button 
+# width = 120, height = 
+
+# home = Label(root, image=homeImg, bg="#073B3A")
+
+# Label(root, text="Home", bg="#073B3A", fg ="#21D375", font=("Cambria", 20), wraplength=300).place(x=85, y=59)
+
 optionsMenu.pack(side=tk.LEFT)
 optionsMenu.pack_propagate(False)
-optionsMenu.configure(width=150, height=2000) 
+optionsMenu.configure(width=200, height=2000) 
 
 homePage = tk.Frame(root, bg='#0B6E4F')
 homePage.pack(side=tk.LEFT)
