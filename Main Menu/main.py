@@ -3,11 +3,23 @@ from tkinter import ttk
 from tkinter import messagebox
 from PIL import Image, ImageTk
 
-#One of the best ways to get things done is by creating habits and systems. Productivity helps you get things done by using scientifically proven ways to help you create habits to manage your schedule and todo lists and enjoy doing work
-#print("Productivity: Get Stuff Done \n Menu: To-Do List, Habit Tracker, My Schedule, ")
+root = tk.Tk()
+root.geometry('700x600')
+root.title('Productivity')
 
-# press button and switch to new file
-# def toDoPress():
+optionsMenu = tk.Frame(root, bg='#073B3A') 
+
+optionsMenu.pack(side=tk.LEFT)
+optionsMenu.pack_propagate(False)
+optionsMenu.configure(width=150, height=2000) 
+
+homePage = tk.Frame(root, bg='#0B6E4F')
+homePage.pack(side=tk.LEFT)
+homePage.pack_propagate(False)
+homePage.configure(height = 2000, width = 2000)
+
+# place label inside of frame
+# scale frame size based on window size
 
 #Classes
 class homePage(tk.Frame): 
