@@ -7,9 +7,9 @@ import customtkinter as ctk
 
 # window setup
 root = Tk(className='Productivity') #create window and name
-#root.geometry("1080x720") # set window size
+root.geometry("1080x720") # set window size
 root.configure(bg='#0B6E4F') # set window color
-root.state("zoomed")
+#root.state("zoomed")
 # icon
 Image_icon = PhotoImage(file="Image/productivity_icon.png")
 root.iconphoto(False, Image_icon)
