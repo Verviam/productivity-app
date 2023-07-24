@@ -52,40 +52,46 @@ productivity = Label(root, image=productivityIcon, bg="#073B3A")
 productivity.place(x=8, y=5)
 
 #home
+Label(root, text="", bg="#21D375", fg ="#21D375", font=("Cambria", 25), wraplength=1000).place(x=3, y=56)
 homeImg = ImageTk.PhotoImage(Image.open("Image/home_img.png"))
 home = Label(root, image=homeImg, bg="#073B3A")
-home.place(x=16, y=56)
-Label(root, text="Home", bg="#073B3A", fg ="#21D375", font=("Cambria", 20), wraplength=300).place(x=80, y=56)
+home.place(x=16, y=61)
+Label(root, text="Home", bg="#073B3A", fg ="#21D375", font=("Cambria", 20), wraplength=300).place(x=85, y=59)
 
 #todolist
+Label(root, text="", bg="#21D375", fg ="#21D375", font=("Cambria", 27), wraplength=1000).place(x=3, y=106)
 todolistImg = ImageTk.PhotoImage(Image.open ("Image/todolist_img.png"))
 todolist = Label(root, image=todolistImg, bg="#073B3A")
-todolist.place(x=int(14.7), y=100)
-Label(root, text="Todolist", bg="#073B3A", fg ="#21D375", font=("Cambria", 19), wraplength=300).place(x=80, y=103)
+todolist.place(x=int(14.7), y=108)
+Label(root, text="Todolist", bg="#073B3A", fg ="#21D375", font=("Cambria", 19), wraplength=300).place(x=85, y=113)
 
 #schedule
+Label(root, text="", bg="#21D375", fg ="#21D375", font=("Cambria", 27), wraplength=1000).place(x=3, y=161)
 scheduleImg = ImageTk.PhotoImage(Image.open("Image/schedule_img.png"))
 schedule = Label(root, image=scheduleImg, bg="#073B3A")
-schedule.place(x=int(14.7), y=150)
-Label(root, text="Schedule", bg="#073B3A", fg ="#21D375", font=("Cambria ", int(17.5)), wraplength=300).place(x=80, y=160)
+schedule.place(x=int(14.7), y=160)
+Label(root, text="Schedule", bg="#073B3A", fg ="#21D375", font=("Cambria ", int(17.5)), wraplength=300).place(x=85, y=169)
 
 #habits
+Label(root, text="", bg="#21D375", fg ="#21D375", font=("Cambria", 27), wraplength=1000).place(x=3, y=217)
 habitsImg = ImageTk.PhotoImage(Image.open("Image/habits_img.png"))
 habits = Label(root, image=habitsImg, bg="#073B3A")
-habits.place(x=int(14.7), y=201)
-Label(root, text="Habits", bg="#073B3A", fg ="#21D375", font=("Cambria", 19), wraplength=300).place(x=80, y=205)
+habits.place(x=int(14.7), y=int(218.5))
+Label(root, text="Habits", bg="#073B3A", fg ="#21D375", font=("Cambria", 19), wraplength=300).place(x=85, y=223)
 
 #notes
+Label(root, text="", bg="#21D375", fg ="#21D375", font=("Cambria", 27), wraplength=1000).place(x=3, y=273)
 notesImg = ImageTk.PhotoImage(Image.open("Image/notes_img.png"))
 notes = Label(root, image=notesImg, bg="#073B3A")
-notes.place(x=19, y=251)
-Label(root, text="Notes", bg="#073B3A", fg ="#21D375", font=("Cambria", 19), wraplength=300).place(x=80, y=253)
+notes.place(x=18, y=277)
+Label(root, text="Notes", bg="#073B3A", fg ="#21D375", font=("Cambria", 19), wraplength=300).place(x=85, y=279)
 
 #timer
+Label(root, text="", bg="#21D375", fg ="#21D375", font=("Cambria", 27), wraplength=1000).place(x=3, y=329)
 timerImg = ImageTk.PhotoImage(Image.open("Image/timer_img.png"))
 timer = Label(root, image=timerImg, bg="#073B3A")
-timer.place(x=13, y=298)
-Label(root, text="Timler", bg="#073B3A", fg ="#21D375", font=("Cambria", 22), wraplength=300).place(x=80, y=298)
+timer.place(x=13, y=333)
+Label(root, text="Timler", bg="#073B3A", fg ="#21D375", font=("Cambria", 22), wraplength=300).place(x=85, y=333)
 
 #arrows
 # arrowsImg = ImageTk.PhotoImage(Image.open("Image/right_arrows_img.png"))
