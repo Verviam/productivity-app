@@ -16,51 +16,50 @@ optionsMenu = tk.Frame(root, bg='#073B3A')
 
 # Home Image Button
 homeImg = ImageTk.PhotoImage(Image.open("Image/home_img.png"))
-homeButton = tk.Button(optionsMenu, image = homeImg)
+homeButton = tk.Button(optionsMenu, image = homeImg, borderwidth=0, highlightthickness=0)
 homeButton.place(x=10, y=50)
-homeIndicate = tk.Label(optionsMenu, text='', bg = '#21D375')
+homeIndicate = tk.Label(optionsMenu, text='', bg = '#073B3A')
 homeIndicate.place(x=3, y=50, width=5, height=40)
-# add text and image to button using canva and make background light green or https://www.geeksforgeeks.org/python-add-image-on-a-tkinter-button/
 
-
+#  fg= '#073B3A'
 # To Do List Button
 todoListImg = ImageTk.PhotoImage(Image.open("Image/todolist_img.png"))
-todoListButton = tk.Button(optionsMenu, image = todoListImg)
+todoListButton = tk.Button(optionsMenu, image = todoListImg,borderwidth=0, highlightthickness=0)
 todoListButton.place(x=10, y=105)
 todoListIndicate = tk.Label(optionsMenu, text='', bg = '#21D375')
 todoListIndicate.place(x=3, y=105, width=5, height=40)
 
 # Schedule Button
 scheduleImg = ImageTk.PhotoImage(Image.open("Image/schedule_img.png"))
-scheduleButton = tk.Button(optionsMenu, image = scheduleImg)
+scheduleButton = tk.Button(optionsMenu, image = scheduleImg, borderwidth=0, highlightthickness=0)
 scheduleButton.place(x=10, y=160)
 scheduleIndicate = tk.Label(optionsMenu, text='', bg = '#21D375')
 scheduleIndicate.place(x=3, y=160, width=5, height=40)
 
 # Habits Button
 habitsImg = ImageTk.PhotoImage(Image.open("Image/habits_img.png"))
-habitsButton = tk.Button(optionsMenu, image = habitsImg)
+habitsButton = tk.Button(optionsMenu, image = habitsImg, borderwidth=0, highlightthickness=0)
 habitsButton.place(x=10, y=215)
 habitsIndicate = tk.Label(optionsMenu, text='', bg = '#21D375')
 habitsIndicate.place(x=3, y=215, width=5, height=40)
 
 # Notes Button
 notesImg = ImageTk.PhotoImage(Image.open("Image/notes_img.png"))
-notesButton = tk.Button(optionsMenu, image = notesImg)
+notesButton = tk.Button(optionsMenu, image = notesImg, borderwidth=0, highlightthickness=0)
 notesButton.place(x=10, y=270)
 notesIndicate = tk.Label(optionsMenu, text='', bg = '#21D375')
 notesIndicate.place(x=3, y=270, width=5, height=40)
 
 # Timer Button
 timerImg = ImageTk.PhotoImage(Image.open("Image/timer_img.png"))
-timerButton = tk.Button(optionsMenu, image = timerImg)
+timerButton = tk.Button(optionsMenu, image = timerImg, borderwidth=0, highlightthickness=0)
 timerButton.place(x=10, y=325)
 timerIndicate = tk.Label(optionsMenu, text='', bg = '#21D375')
 timerIndicate.place(x=3, y=325, width=5, height=40)
 
 # Settings Button
 settingsImg = ImageTk.PhotoImage(Image.open("Image/settings_img.png"))
-settingsButton = tk.Button(optionsMenu, image = settingsImg)
+settingsButton = tk.Button(optionsMenu, image = settingsImg, borderwidth=0, highlightthickness=0)
 settingsButton.place(x=10, y=700)
 settingsIndicate = tk.Label(optionsMenu, text='', bg = '#21D375')
 settingsIndicate.place(x=3, y=700, width=5, height=40)
@@ -68,7 +67,7 @@ settingsIndicate.place(x=3, y=700, width=5, height=40)
 # Options Menu
 optionsMenu.pack(side=tk.LEFT)
 optionsMenu.pack_propagate(False)
-optionsMenu.configure(width=205, height=2000) 
+optionsMenu.configure(width=210, height=2000) 
 
 homePage = tk.Frame(root, bg='#0B6E4F')
 homePage.pack(side=tk.LEFT)
