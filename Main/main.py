@@ -15,42 +15,42 @@ root.iconphoto(False, Image_icon)
 # Switch frame functions
 def homePage():
     homeFrame = tk.Frame(displayFrame)
-    topLabel = tk.Label(homeFrame, text='Productivity App', font=('Bold', 30))
+    topLabel = tk.Label(homeFrame, text='Productivity App', font=('Bold', 30), bg="#0B6E4F", fg="#00f678")
     topLabel.pack()
 
     homeFrame.pack(pady=20)
 
 def toDoPage():
     toDoFrame = tk.Frame(displayFrame)
-    topLabel = tk.Label(toDoFrame, text='To Do List', font=('Bold', 30))
+    topLabel = tk.Label(toDoFrame, text='To Do List', font=('Bold', 30), bg="#0B6E4F", fg="#00f678")
     topLabel.pack()
     
     toDoFrame.pack(pady=20)
 
 def schedulePage():
     scheduleFrame = tk.Frame(displayFrame)
-    topLabel = tk.Label(scheduleFrame, text='Schedule', font=('Bold', 30))
+    topLabel = tk.Label(scheduleFrame, text='Schedule', font=('Bold', 30), bg="#0B6E4F", fg="#00f678")
     topLabel.pack()
     
     scheduleFrame.pack(pady=20)
 
 def habitsPage():
     habitsFrame = tk.Frame(displayFrame)
-    topLabel = tk.Label(habitsFrame, text='Habits', font=('Bold', 30))
+    topLabel = tk.Label(habitsFrame, text='Habits', font=('Bold', 30), bg="#0B6E4F", fg="#00f678")
     topLabel.pack()
     
     habitsFrame.pack(pady=20)
 
 def notesPage():
     notesFrame = tk.Frame(displayFrame)
-    topLabel = tk.Label(notesFrame, text='Your Notes', font=('Bold', 30))
+    topLabel = tk.Label(notesFrame, text='Your Notes', font=('Bold', 30), bg="#0B6E4F", fg="#00f678")
     topLabel.pack()
     
     notesFrame.pack(pady=20)
 
 def timerPage():
     timerFrame = tk.Frame(displayFrame)
-    topLabel = tk.Label(timerFrame, text='Timer', font=('Bold', 30))
+    topLabel = tk.Label(timerFrame, text='Timer', font=('Bold', 30), bg="#0B6E4F", fg="#00f678")
     topLabel.pack()
     
     timerFrame.pack(pady=20)
