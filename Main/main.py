@@ -131,11 +131,10 @@ timerIndicate.place(x=3, y=325, width=5, height=40)
 # Settings Button
 settingsImg = ImageTk.PhotoImage(Image.open("Image/settings_img.png"))
 settingsButton = tk.Button(optionsMenu, image = settingsImg, borderwidth=0, highlightthickness=0, bg = "#073B3A", command=lambda: indicator(settingsIndicate, settingsPage), activebackground="#073B3A")
-settingsButton.place(x=12, y=700)
+settingsButton.place(x=12, y=720)
 settingsIndicate = tk.Label(optionsMenu, text='', bg = '#073B3A')
-settingsIndicate.place(x=3, y=700, width=5, height=40)
-# Have user's name next to setting icon 
-# change settings icon size and background
+settingsIndicate.place(x=3, y=720, width=5, height=40) 
+
 
 # Options Menu
 optionsMenu.pack(side=tk.LEFT)
