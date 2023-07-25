@@ -149,17 +149,5 @@ displayFrame.configure(height = 2000, width = 2000)
 
 
 
-    #     self.frames = {}
-    #     for P in (homePage, toDoList, habits, schedule, notes):
-    #         page = P(root, self)
-    #         self.frames[P] = page
-    #         page.grid(row = 0, column = 0, sticky="nsew")
-
-    #     self.show_frame(homePage)
-
-    # def show_frame(self, page):
-    #     frame = self.frames[page]
-    #     frame.tkraise()
-
 root.mainloop()
 
