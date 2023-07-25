@@ -55,8 +55,8 @@ def timerPage():
     topLabel.pack()
     
     date = dt.datetime.now()
-    # Create Label to display the Date
-    timeLabel = tk.Label(displayFrame, text=f"{date:%A, %B %d, %Y}")
+    
+    timeLabel = tk.Label(displayFrame, text=f"{date:%A, %B %d, %Y}") # Create Label to display the Date
     time = text=f"{date:%A, %B %d, %Y}"
     date = tk.Label(displayFrame, text="Current Time: " + str(time), font="Bold, 20", bg="#0B6E4F", fg="#00f678")
     date.place(x=400, y=600)
@@ -154,7 +154,7 @@ displayFrame.pack(side=tk.LEFT)
 displayFrame.pack_propagate(False)
 displayFrame.configure(height = 2000, width = 2000)
 
-
-
+# open home page as main page
+homePage()
 root.mainloop()
 
