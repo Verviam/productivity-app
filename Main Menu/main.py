@@ -13,14 +13,22 @@ Image_icon = tk.PhotoImage(file="Image/productivity_icon.png")
 root.iconphoto(False, Image_icon)
 
 # Switch frame functions
-# def
+def homePage():
+    homeFrame = tk.Frame(displayFrame)
+
+    topLabel = tk.Label(homeFrame, text='Productivity App', font=('Bold', 30))
+    topLabel.pack()
+
+    homeFrame.pack(pady=20)
 
 
 
 # Indicator functions
-def indicator(label):
+def indicator(label, page):
     hide_indicator()
     label.config(bg='#21D375')
+    page()
+
 
 def hide_indicator():
     homeIndicate.config(bg='#073B3A')
@@ -35,7 +43,7 @@ optionsMenu = tk.Frame(root, bg='#073B3A')
 
 # Home Image Button
 homeImg = ImageTk.PhotoImage(Image.open("Image/home_img.png"))
-homeButton = tk.Button(optionsMenu, image = homeImg, borderwidth=0, highlightthickness=0, command=lambda: indicator(homeIndicate))
+homeButton = tk.Button(optionsMenu, image = homeImg, borderwidth=0, highlightthickness=0, command=lambda: indicator(homeIndicate, homePage))
 homeButton.place(x=10, y=50)
 homeIndicate = tk.Label(optionsMenu, text='', bg = '#073B3A')
 homeIndicate.place(x=3, y=50, width=5, height=40)
@@ -89,10 +97,10 @@ optionsMenu.pack(side=tk.LEFT)
 optionsMenu.pack_propagate(False)
 optionsMenu.configure(width=210, height=2000) 
 
-homePage = tk.Frame(root, bg='#0B6E4F')
-homePage.pack(side=tk.LEFT)
-homePage.pack_propagate(False)
-homePage.configure(height = 2000, width = 2000)
+displayFrame = tk.Frame(root, bg='#0B6E4F')
+displayFrame.pack(side=tk.LEFT)
+displayFrame.pack_propagate(False)
+displayFrame.configure(height = 2000, width = 2000)
 
 
 
