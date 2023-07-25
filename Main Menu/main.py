@@ -29,6 +29,7 @@ def hide_indicator():
     habitsIndicate.config(bg='#073B3A')
     notesIndicate.config(bg='#073B3A')
     timerIndicate.config(bg='#073B3A')
+    settingsIndicate.config(bg='#073B3A')
 
 optionsMenu = tk.Frame(root, bg='#073B3A') 
 
@@ -76,9 +77,12 @@ timerIndicate.place(x=3, y=325, width=5, height=40)
 
 # Settings Button
 settingsImg = ImageTk.PhotoImage(Image.open("Image/settings_img.png"))
-settingsButton = tk.Button(optionsMenu, image = settingsImg, borderwidth=0, highlightthickness=0)
-# Have user's name next to setting icon
-
+settingsButton = tk.Button(optionsMenu, image = settingsImg, borderwidth=0, highlightthickness=0, command=lambda: indicator(settingsIndicate))
+settingsButton.place(x=12, y=700)
+settingsIndicate = tk.Label(optionsMenu, text='', bg = '#073B3A')
+settingsIndicate.place(x=3, y=700, width=5, height=40)
+# Have user's name next to setting icon 
+# change settings icon size and background
 
 # Options Menu
 optionsMenu.pack(side=tk.LEFT)
