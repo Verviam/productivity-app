@@ -56,8 +56,10 @@ def timerPage():
     
     date = dt.datetime.now()
     # Create Label to display the Date
-    time = tk.Label(root, text=f"{date:%A, %B %d, %Y}", font="Bold, 20", bg="#0B6E4F", fg="#00f678")
-    time.place(x=500, y=500)
+    timeLabel = tk.Label(displayFrame, text=f"{date:%A, %B %d, %Y}")
+    time = text=f"{date:%A, %B %d, %Y}"
+    date = tk.Label(displayFrame, text="Current Time: " + str(time), font="Bold, 20", bg="#0B6E4F", fg="#00f678")
+    date.place(x=400, y=600)
 
     timerFrame.pack(pady=20)
 
