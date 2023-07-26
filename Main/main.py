@@ -16,8 +16,11 @@ root.iconphoto(False, Image_icon)
 # Switch frame functions
 def homePage():
     homeFrame = tk.Frame(displayFrame)
-    topLabel = tk.Label(homeFrame, text='Productivity App', font=('Bold', 30), bg="#0B6E4F", fg="#00f678")
-    topLabel.pack()
+    welcomeLabel = tk.Label(homeFrame, text='Hello ______', font=('Bold', 30), bg="#0B6E4F", fg="#00f678")
+    welcomeLabel.grid(row=0, column = 0)
+ 
+    # drag and drop habits and to do into schedule 
+    # only show today's schedule
 
     homeFrame.pack(pady=20)
 
@@ -32,7 +35,16 @@ def schedulePage():
     scheduleFrame = tk.Frame(displayFrame)
     topLabel = tk.Label(scheduleFrame, text='Schedule', font=('Bold', 30), bg="#0B6E4F", fg="#00f678")
     topLabel.pack()
-    
+
+    # 
+    topLabel = tk.Label(scheduleFrame, text='Schedule', font=('Bold', 30), bg="#0B6E4F", fg="#00f678")
+    topLabel.pack()
+
+    # make daily calendar that can be zoomed out to view the month and schedule tasks in advance
+    # add event-to-schedule button
+    # make it able to be called back to home page
+    # have every day's schedule be displayed here
+
     scheduleFrame.pack(pady=20)
 
 def habitsPage():
