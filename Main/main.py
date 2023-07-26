@@ -3,6 +3,7 @@ from tkinter import ttk
 from tkinter import messagebox
 from PIL import Image, ImageTk
 import datetime as dt
+from time import strftime
 
 root = tk.Tk()
 root.geometry('1024x768')
@@ -65,15 +66,34 @@ def timerPage():
     timerFrame = tk.Frame(displayFrame)
     topLabel = tk.Label(timerFrame, text='Timer', font=('Bold', 30), bg="#0B6E4F", fg="#00f678")
     topLabel.pack()
-    
-    date = dt.datetime.now()
-    
-    timeLabel = tk.Label(displayFrame, text=f"{date:%A, %B %d, %Y}") # Create Label to display the Date
-    time = f"{date:%A, %B %d, %Y}"
-    date = tk.Label(displayFrame, text="Current Time: " + str(time), font="Bold, 20", bg="#0B6E4F", fg="#00f678")
-    date.place(x=190, y=725)
 
-    timerFrame.pack(pady=20)
+    #time
+    def time():
+        time_string = strftime('%H:%M:%S %p') #time
+        l1.config(text=time_string)
+        l1.after(1000,time) # time delay of 1000 milliseconds 
+
+    l1 = tk.Label(root, font="Bold, 20", bg='#0B6E4F', fg='#00f678')
+    l1.place(x=220, y=653)
+    time()
+
+    #day
+    def day():
+        time_string = strftime('%A') #day
+        l2.config(text=time_string)
+
+    l2 = tk.Label(root, font="Bold, 20", bg='#0B6E4F', fg='#00f678')
+    l2.place(x=220, y=691)
+    day()
+    
+    #date
+    def date():
+        time_string = strftime('%x') #date
+        l3.config(text=time_string)
+
+    l3 = tk.Label(root, font="Bold, 20", bg='#0B6E4F', fg='#00f678')
+    l3.place(x=220, y=729)
+    date()
 
 def settingsPage():
     settingsFrame = tk.Frame(displayFrame)
@@ -158,7 +178,7 @@ settingsIndicate.place(x=3, y=720, width=5, height=40)
 
 # Options Menu
 optionsMenu.pack(side=tk.LEFT)
-optionsMenu.pack_propagate(False)
+optionsMenu.pack_propagate(False) 
 optionsMenu.configure(width=210, height=2000) 
 
 displayFrame = tk.Frame(root, bg='#0B6E4F')
