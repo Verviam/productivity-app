@@ -4,6 +4,7 @@ from tkinter import messagebox
 from PIL import Image, ImageTk
 import datetime as dt
 from time import strftime
+from tkcalendar import DateEntry
 
 root = tk.Tk()
 root.geometry('1024x768')
@@ -37,9 +38,21 @@ def schedulePage():
     topLabel = tk.Label(scheduleFrame, text='Schedule', font=('Bold', 30), bg="#0B6E4F", fg="#00f678")
     topLabel.pack()
 
-    # 
-    topLabel = tk.Label(scheduleFrame, text='Schedule', font=('Bold', 30), bg="#0B6E4F", fg="#00f678")
-    topLabel.pack()
+    # Daily Calendar
+    cal = DateEntry(scheduleFrame, width=12, background='#00f678', foreground='black', borderwidth=2)
+    cal.pack(pady=20)
+    
+    # Function to handle date selection
+    def handle_date_selection():
+        selected_date = cal.get_date()
+        print(f"Selected date: {selected_date}")
+        # You can implement functionality to add events to the selected date here
+
+    
+    # Add an event-to-schedule button
+    add_event_button = ttk.Button(scheduleFrame, text="Add Event", command=handle_date_selection)
+    add_event_button.pack()
+
 
     # make daily calendar that can be zoomed out to view the month and schedule tasks in advance
     # add event-to-schedule button
