@@ -18,8 +18,11 @@ root.iconphoto(False, Image_icon)
 # Switch frame functions
 def homePage():
     homeFrame = tk.Frame(displayFrame)
-    welcomeLabel = tk.Label(homeFrame, text='Hello ______', font=('Bold', 30), bg="#0B6E4F", fg="#00f678")
-    welcomeLabel.grid(row=0, column = 0)
+    welcomeLabel = tk.Label(displayFrame, text='Hello User298302', font=('Bold', 30), bg="#0B6E4F", fg="#00f678")
+    welcomeLabel.place(x=10, y=10)
+    cover = tk.Frame(displayFrame, bg='red')
+    cover.configure(width=33, height=33, bg='#0B6E4F')
+    cover.place(x=390, y=10)
  
     # drag and drop habits and to do into schedule 
     # only show today's schedule
@@ -86,8 +89,8 @@ def timerPage():
         l1.config(text=time_string)
         l1.after(1000,time) # time delay of 1000 milliseconds 
 
-    l1 = tk.Label(root, font="Bold, 20", bg='#0B6E4F', fg='#00f678')
-    l1.place(x=220, y=653)
+    l1 = tk.Label(displayFrame, font="Bold, 20", bg='#0B6E4F', fg='#00f678')
+    l1.place(x=10, y=653)
     time()
 
     #day
@@ -95,8 +98,8 @@ def timerPage():
         time_string = strftime('%A') #day
         l2.config(text=time_string)
 
-    l2 = tk.Label(root, font="Bold, 20", bg='#0B6E4F', fg='#00f678')
-    l2.place(x=220, y=691)
+    l2 = tk.Label(displayFrame, font="Bold, 20", bg='#0B6E4F', fg='#00f678')
+    l2.place(x=30, y=691)
     day()
     
     #date
@@ -104,8 +107,8 @@ def timerPage():
         time_string = strftime('%x') #date
         l3.config(text=time_string)
 
-    l3 = tk.Label(root, font="Bold, 20", bg='#0B6E4F', fg='#00f678')
-    l3.place(x=220, y=729)
+    l3 = tk.Label(displayFrame, font="Bold, 20", bg='#0B6E4F', fg='#00f678')
+    l3.place(x=33, y=729)
     date()
 
 def settingsPage():
