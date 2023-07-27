@@ -26,14 +26,14 @@ def homePage():
  
     # drag and drop habits and to do into schedule 
     # only show today's schedule
-
+    # find out why it can't be located on top left corner if the tk.Label is in (homeFrame)
     homeFrame.pack(pady=20)
 
 def toDoPage():
     toDoFrame = tk.Frame(displayFrame)
     topLabel = tk.Label(toDoFrame, text='To Do List', font=('Bold', 30), bg="#0B6E4F", fg="#00f678")
     topLabel.pack()
-    
+    # add different to do lists for different tasks
     toDoFrame.pack(pady=20)
 
 def schedulePage():
