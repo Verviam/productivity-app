@@ -41,10 +41,17 @@ def schedulePage():
     topLabel = tk.Label(scheduleFrame, text='Schedule', font=('Bold', 30), bg="#0B6E4F", fg="#00f678")
     topLabel.pack()
 
+    eventsLabel = tk.Label(scheduleFrame, text = "12am",  font=('Bold', 30), bg="#0B6E4F", fg="#00f678")
+    eventsLabel.pack()
+    # set height and width of events time label and then events are modified on the right side
+    for events in eventsLabel:
+        # add 1 hr to text and add 1 to the variable name
+
     # Daily Calendar
     cal = DateEntry(scheduleFrame, width=12, background='#00f678', foreground='black', borderwidth=2)
     cal.pack(pady=20)
     
+    calendarBg = tk.Label(scheduleFrame, )
     # Function to handle date selection
     def handle_date_selection():
         selected_date = cal.get_date()
@@ -55,6 +62,12 @@ def schedulePage():
     # Add an event-to-schedule button
     add_event_button = ttk.Button(scheduleFrame, text="Add Event", command=handle_date_selection)
     add_event_button.pack()
+
+    def buttonFunc():
+        print(entry.get())
+        label.config(text="some other text")
+    entry = ttk.Entry(master=root)
+    entry.pack()
 
 
     # make daily calendar that can be zoomed out to view the month and schedule tasks in advance
