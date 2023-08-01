@@ -37,31 +37,51 @@ def toDoPage():
     toDoFrame.pack(pady=20)
 
 def schedulePage():
-    scheduleFrame = tk.Frame(displayFrame)
+    scheduleFrame = tk.Frame(displayFrame, bg = '#073B3A')
     topLabel = tk.Label(scheduleFrame, text='Schedule', font=('Bold', 30), bg="#0B6E4F", fg="#00f678")
     topLabel.pack()
 
-    eventsLabel = tk.Label(scheduleFrame, text = "12am",  font=('Bold', 30), bg="#0B6E4F", fg="#00f678")
-    eventsLabel.pack()
-    # set height and width of events time label and then events are modified on the right side
-    for events in eventsLabel:
-        # add 1 hr to text and add 1 to the variable name
-
-    # Daily Calendar
-    cal = DateEntry(scheduleFrame, width=12, background='#00f678', foreground='black', borderwidth=2)
-    cal.pack(pady=20)
+    Pm = "pm"
+    numsPm = ['11', '10', '9', '8', '7', '6', '5', '4', '3', '2', '1', '12']
+    timeLabelsPm=[] 
+    for numPm in numsPm: #iterates over your nums
+        timePm = numPm + Pm
+        pmLabel = tk.Label(scheduleFrame,text=timePm, bg='#0B6E4F', font=('Bold', 12)) #set your text
+        pmLabel.pack()
+        timeLabelsPm.append(pmLabel) #appends the label to the list for further use
     
-    calendarBg = tk.Label(scheduleFrame, )
-    # Function to handle date selection
-    def handle_date_selection():
+    Am = "am"
+    numsAm = ['11', '10', '9', '8', '7', '6', '5', '4', '3', '2', '1', '12']
+    timeLabelsAm=[] 
+    for numAm in numsAm: #iterates over your nums
+        timeAm = numAm + Am
+        amLabel = tk.Label(scheduleFrame,text=timeAm, bg='#0B6E4F', font=('Bold', 12)) #set your text
+        amLabel.pack()
+        timeLabelsAm.append(amLabel) #appends the label to the list for further use
+    
+    for label in range (0, len(timeLabelsAm)):
+        timeLabelsAm[label].pack(anchor = "sw", side=tk.BOTTOM)
+
+    for label in range (0, len(timeLabelsPm)):
+        timeLabelsPm[label].pack(anchor = "sw", side=tk.BOTTOM)
+     
+    # separate labels with outlines 
+
+    # Select Day Calendar
+    cal = DateEntry(scheduleFrame, width=12, background='#0B6E4F', foreground='black', borderwidth=2, )
+    cal.pack(side=tk.TOP)
+    
+
+    def dateSelect():
         selected_date = cal.get_date()
         print(f"Selected date: {selected_date}")
         # You can implement functionality to add events to the selected date here
 
-    
     # Add an event-to-schedule button
-    add_event_button = ttk.Button(scheduleFrame, text="Add Event", command=handle_date_selection)
+    add_event_button = ttk.Button(scheduleFrame, text="Add Event", command=dateSelect)
     add_event_button.pack()
+
+    # make add event button visible over frame 
 
     def buttonFunc():
         print(entry.get())
@@ -70,12 +90,19 @@ def schedulePage():
     entry.pack()
 
 
-    # make daily calendar that can be zoomed out to view the month and schedule tasks in advance
-    # add event-to-schedule button
+    # entrybox input task
+    # entrybox input time and date
+    # place label on schedule based on entrybox inputs
     # make it able to be called back to home page
     # have every day's schedule be displayed here
 
     scheduleFrame.pack(pady=20)
+
+    # To Do: 
+    # make times on left of screen
+    # add scrollbar to time selection
+    # create an add event button that allows user input for event name and adds to specific time with specific day
+    # drag and drop feature
 
 def habitsPage():
     habitsFrame = tk.Frame(displayFrame)
