@@ -41,21 +41,21 @@ def schedulePage():
     topLabel = tk.Label(scheduleFrame, text='Schedule', font=('Bold', 30), bg="#0B6E4F", fg="#00f678")
     topLabel.pack()
 
-    Pm = "pm"
+    Pm = "pm:"
     numsPm = ['11', '10', '9', '8', '7', '6', '5', '4', '3', '2', '1', '12']
     timeLabelsPm=[] 
     for numPm in numsPm: #iterates over your nums
         timePm = numPm + Pm
-        pmLabel = tk.Label(scheduleFrame,text=timePm, bg='#0B6E4F', font=('Bold', 12)) #set your text
+        pmLabel = tk.Label(scheduleFrame,text=timePm, fg="#00f678", bg="#073B3A", font=('Bold', 12)) #set your text
         pmLabel.pack()
         timeLabelsPm.append(pmLabel) #appends the label to the list for further use
     
-    Am = "am"
+    Am = "am:"
     numsAm = ['11', '10', '9', '8', '7', '6', '5', '4', '3', '2', '1', '12']
     timeLabelsAm=[] 
     for numAm in numsAm: #iterates over your nums
         timeAm = numAm + Am
-        amLabel = tk.Label(scheduleFrame,text=timeAm, bg='#0B6E4F', font=('Bold', 12)) #set your text
+        amLabel = tk.Label(scheduleFrame,text=timeAm, fg="#00f678", bg="#073B3A", font=('Bold', 12)) #set your text
         amLabel.pack()
         timeLabelsAm.append(amLabel) #appends the label to the list for further use
     
@@ -65,30 +65,25 @@ def schedulePage():
     for label in range (0, len(timeLabelsPm)):
         timeLabelsPm[label].pack(anchor = "sw", side=tk.BOTTOM)
      
-    # separate labels with outlines 
+
 
     # Select Day Calendar
-    cal = DateEntry(scheduleFrame, width=12, background='#0B6E4F', foreground='black', borderwidth=2, )
+    cal = DateEntry(scheduleFrame, width=12, background="#00f678", foreground='black', borderwidth=2, )
     cal.pack(side=tk.TOP)
+
+    taskEntry = ttk.Entry(master=schedulePage) # fix error
+    taskEntry.pack(side=tk.TOP)
     
+    addTaskButton = ttk.Button(scheduleFrame, text="Add Task", command=addTaskClick)
+    addTaskButton.pack()
+    
+    # time =  #allow user to select time to add task to
+    def addTaskClick():
+        dateInput = cal.get_date()
+        taskInput = taskEntry.get()
+        #timeInput 
 
-    def dateSelect():
-        selected_date = cal.get_date()
-        print(f"Selected date: {selected_date}")
-        # You can implement functionality to add events to the selected date here
-
-    # Add an event-to-schedule button
-    add_event_button = ttk.Button(scheduleFrame, text="Add Event", command=dateSelect)
-    add_event_button.pack()
-
-    # make add event button visible over frame 
-
-    def buttonFunc():
-        print(entry.get())
-        label.config(text="some other text")
-    entry = ttk.Entry(master=root)
-    entry.pack()
-
+    # make entrybox that asks user for task and adds task after time and stores task for selected date
 
     # entrybox input task
     # entrybox input time and date
