@@ -5,9 +5,6 @@ from PIL import Image, ImageTk
 import datetime as dt
 from time import strftime
 from tkcalendar import DateEntry
-from tkinter import ttk, messagebox
-import json
-from ttkbootstrap import Style
 
 root = tk.Tk()
 root.geometry('1024x768')
