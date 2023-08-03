@@ -79,12 +79,45 @@ def schedulePage():
     cal.pack(side=tk.TOP)
 
     # Select Time
+    options = [
+        "12am", 
+        "1am", 
+        "2am", 
+        "3am", 
+        "4am", 
+        "5am", 
+        "6am", 
+        "7am", 
+        "8am", 
+        "9am", 
+        "10am", 
+        "11am", 
+        "12pm", 
+        "1pm", 
+        "2pm", 
+        "3pm", 
+        "4pm", 
+        "5pm", 
+        "6pm", 
+        "7pm", 
+        "8pm", 
+        "9pm", 
+        "10pm", 
+        "11pm"
+        ]
+    
+    timeClick = tk.StringVar()
+
+    timeClick.set("Select a Time")
+    dropDown = tk.OptionMenu(scheduleFrame, timeClick, *options)
+    dropDown.pack()
+
     # Store tasks ahead of time in file
 
     def addTaskClick():
         dateInput = cal.get_date()
         taskInput = taskEntry.get()
-        #timeInput 
+        timeInput = timeClick.get() # if user doesn't select time tell them to select time or put in a no time assigned box on the side
         print(taskInput)
 
     addTaskButton = ttk.Button(scheduleFrame, text="Add Task", command=addTaskClick)
