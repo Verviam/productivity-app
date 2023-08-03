@@ -164,6 +164,9 @@ def notesPage():
         title.pack(padx=10, pady=10, side=tk.LEFT, anchor="n")
         Untitled = "Untitled"
         title.insert(0, Untitled)
+        def delTempText(e):
+            title.delete(0,"end") 
+        title.bind("<FocusIn>", delTempText)
 
     add_note = tk.Button(displayFrame, text="+", font=('Bold', 20), bg="#073B3A", fg="#00f678", 
                          activebackground="#073B3A", activeforeground="#00f678", borderwidth=0, highlightthickness=0,
