@@ -5,6 +5,9 @@ from PIL import Image, ImageTk
 import datetime as dt
 from time import strftime
 from tkcalendar import DateEntry
+from tkinter import ttk, messagebox
+import json
+from ttkbootstrap import Style
 
 root = tk.Tk()
 root.geometry('1024x768')
@@ -73,10 +76,43 @@ def habitsPage():
 
 def notesPage():
     notesFrame = tk.Frame(displayFrame)
-    topLabel = tk.Label(notesFrame, text='Your Notes', font=('Bold', 30), bg="#0B6E4F", fg="#00f678")
-    topLabel.pack()
+    topLabel = tk.Label(notesFrame, text='Notes', font=('Bold', 30), bg="#0B6E4F", fg="#00f678")
     
-    notesFrame.pack(pady=20)
+    # Deletes Pages to switch to new frames
+    def deletePages():
+        for frame in displayFrame.winfo_children():
+            frame.destroy()
+
+    # Indicator functions
+    def indicator(label, page):
+        hide_indicator()
+        label.config(bg='#21D375')
+        deletePages()
+        page()
+    filler = tk.Button(displayFrame, text="", font=('Bold', 12), bg="#0B6E4F", fg="#00f678", activebackground="#0B6E4F", 
+                       activeforeground="#00f678", borderwidth=0, highlightthickness=0)
+    filler.pack(padx=50, pady=5, ipadx=900)
+
+    note_example = tk.Button(displayFrame, text="Note Example", font=('Bold', 20), bg="#073B3A", fg="#00f678", 
+                             activebackground="#073B3A", activeforeground="#00f678", borderwidth=0, highlightthickness=0)
+    note_example.pack(padx=50, pady=5, ipadx=900)
+    
+    def add_new_note():
+        for widgets in displayFrame.winfo_children():
+            widgets.destroy()
+        title = tk.Entry(displayFrame, font=('Bold', 20), bg="#073B3A", fg="#00f678", borderwidth=0, highlightthickness=0)
+        title.pack(padx=10, pady=10, side=tk.LEFT, anchor="n")
+        Untitled = "Untitled"
+        title.insert(0, Untitled)
+
+    add_note = tk.Button(displayFrame, text="+", font=('Bold', 20), bg="#073B3A", fg="#00f678", 
+                         activebackground="#073B3A", activeforeground="#00f678", borderwidth=0, highlightthickness=0,
+                         command=add_new_note)
+    add_note.pack(padx=50, pady=5, ipadx=900)
+    
+
+    topLabel.pack()  
+
 
 def timerPage():
     timerFrame = tk.Frame(displayFrame)
