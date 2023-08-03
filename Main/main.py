@@ -171,7 +171,7 @@ def notesPage():
         title.bind("<FocusIn>", delTempText)
 
         note_entry = tk.Entry(displayFrame, font=('Bold', 20), bg="#073B3A", fg="#00f678", borderwidth=0, highlightthickness=0)
-        note_entry.pack(padx=10, pady=10, side="bottom")
+        note_entry.pack(padx=10, pady=10, )
 
     add_note = tk.Button(displayFrame, text="+", font=('Bold', 20), bg="#073B3A", fg="#00f678", 
                          activebackground="#073B3A", activeforeground="#00f678", borderwidth=0, highlightthickness=0,
