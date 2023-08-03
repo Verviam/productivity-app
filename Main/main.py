@@ -38,14 +38,14 @@ def toDoPage():
 
 def schedulePage():
     scheduleFrame = tk.Frame(displayFrame, bg = '#073B3A')
-    topLabel = tk.Label(scheduleFrame, text='Schedule', font=('Bold', 30), bg="#0B6E4F", fg="#00f678")
+    topLabel = tk.Label(scheduleFrame, text='Schedule', font=('Bold', 30), bg="#073B3A", fg="#00f678")
     topLabel.pack()
 
     Pm = "pm:"
     numsPm = ['11', '10', '9', '8', '7', '6', '5', '4', '3', '2', '1', '12']
     timeLabelsPm=[] 
     for numPm in numsPm: #iterates over your nums
-        timePm = numPm + Pm
+        timePm = numPm + Pm 
         pmLabel = tk.Label(scheduleFrame,text=timePm, fg="#00f678", bg="#073B3A", font=('Bold', 12)) #set your text
         pmLabel.pack(padx=5)
         timeLabelsPm.append(pmLabel) #appends the label to the list for further use
@@ -109,16 +109,19 @@ def schedulePage():
     timeClick = tk.StringVar()
 
     timeClick.set("Select a Time")
-    dropDown = tk.OptionMenu(scheduleFrame, timeClick, *options)
-    dropDown.pack()
-
-    # Store tasks ahead of time in file
+    dropDownTime = tk.OptionMenu(scheduleFrame, timeClick, *options)
+    dropDownTime.pack()
 
     def addTaskClick():
         dateInput = cal.get_date()
         taskInput = taskEntry.get()
-        timeInput = timeClick.get() # if user doesn't select time tell them to select time or put in a no time assigned box on the side
-        print(taskInput)
+        timeInput = timeClick.get() 
+        # if user doesn't select time tell them to select time or put in a no time assigned box on the side
+        # if timeInput == "12am"
+        #     for 12am: in pmLabel:
+        #         pmLabel.configure(text=taskInput)
+
+    # Store tasks ahead of time in file
 
     addTaskButton = ttk.Button(scheduleFrame, text="Add Task", command=addTaskClick)
     addTaskButton.pack()
