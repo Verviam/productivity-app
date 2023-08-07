@@ -157,16 +157,28 @@ def schedulePage():
 
     def updateTaskLabel(timestamp): # has to be based on the same time and date based on timestamp new task input data + be able to add multiple different values to tasks.json
         for label in timeLabelsPm:
-            if label.cget ("text") == timePm and timestamp: 
-                label.config(text=timePm + tasks[timestamp])
+            timePm = label.cget ("text")
+            if timePm and timePm.endswith("pm:"):
+                timePm = timePm.replace("pm:", "pm:" + taskEntry.get())
+                if timestamp in tasks and timePm == timestamp[11:14]:
+                    label.config(text = timePm + " " + tasks[timestamp])
+                else: 
+                    label.config(text = timePm)
         for label in timeLabelsAm:
-            if label.cget ("text")== timeAm and timestamp:
-                label.config(text=timeAm + tasks[timestamp])
+            timeAm = label.cget ("text")
+            if timeAm and timeAm.endswith("am:"):
+                timeAm = timeAm.replace("am:", "am:" + taskEntry.get())
+                if timestamp in tasks and timeAm == timestamp[11:14]:
+                    label.config(text=timeAm + " " + tasks[timestamp])
+                else:
+                    label.config(text=timeAm)
 
 
     addTaskButton = ttk.Button(scheduleFrame, text="Add Task", command=addTaskClick)
     addTaskButton.pack()
-    updateTaskLabel()
+
+    for timestamp in tasks.keys():
+        updateTaskLabel(timestamp)
     
     root.protocol("WM_DELETE_WINDOW", onClose) #saves tasks when window closed
     scheduleFrame.pack(pady=20) # make it able to be called back to home page
