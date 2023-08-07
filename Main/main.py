@@ -91,13 +91,6 @@ def schedulePage():
     for label in range (len(timeLabelsPm)):
         timeLabelsPm[label].pack(anchor = "sw", side=tk.BOTTOM)
 
-
-    def updateTaskLabel():
-        for label in timeLabelsPm:
-            label.config(text=timePm + tasks)
-        for label in timeLabelsAm:
-            label.config(text=timeAm + tasks)
-
      
     # Entrybox with temporary text
     def delTempText(e):
@@ -157,7 +150,15 @@ def schedulePage():
             timestamp = f"{dateInput.strftime('%Y-%m-%d')} {timeInput}" 
             tasks[timestamp] = taskInput
             saveTask()
-            updateTaskLabel()
+            updateTaskLabel(timestamp)
+
+    def updateTaskLabel(timestamp): # has to be based on the same time and date based on timestamp new task input data + be able to add multiple different values to tasks.json
+        for label in timeLabelsPm:
+            if label.cget ("text") == timePm and timestamp: 
+                label.config(text=timePm + tasks[timestamp])
+        for label in timeLabelsAm:
+            if label.cget ("text")== timeAm and timestamp:
+                label.config(text=timeAm + tasks[timestamp])
 
 
     addTaskButton = ttk.Button(scheduleFrame, text="Add Task", command=addTaskClick)
