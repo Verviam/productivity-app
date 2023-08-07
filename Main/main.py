@@ -5,6 +5,8 @@ from PIL import Image, ImageTk
 import datetime as dt
 from time import strftime
 from tkcalendar import DateEntry
+import json # for saving tasks for specific dates
+import os 
 
 root = tk.Tk()
 root.geometry('1024x768')
@@ -38,8 +40,32 @@ def toDoPage():
 
 def schedulePage():
     scheduleFrame = tk.Frame(displayFrame, bg = '#073B3A')
-    topLabel = tk.Label(scheduleFrame, text='Schedule', font=('Bold', 30), bg="#0B6E4F", fg="#00f678")
+    topLabel = tk.Label(scheduleFrame, text='Schedule', font=('Bold', 30), bg="#073B3A", fg="#00f678")
     topLabel.pack()
+    
+    def saveTask():
+        if tasks:
+            with open('tasks.json', 'w') as file: 
+                json.dump(tasks, file)
+
+        # else if user doesn't select time tell them to select time or put in a no time assigned box on the side 
+
+    def loadTask():
+        global tasks
+        if os.path.exists('tasks.json'):
+            with open('tasks.json', 'r') as file:
+                try: 
+                    tasks = json.load(file)
+                except json.JSONDecodeError:
+                    tasks = {}
+        else: 
+            tasks = {}
+
+    def onClose():
+        saveTask()
+        root.destroy()
+
+    loadTask()
 
     Pm = "pm:"
     numsPm = ['11', '10', '9', '8', '7', '6', '5', '4', '3', '2', '1', '12']
@@ -59,11 +85,43 @@ def schedulePage():
         amLabel.pack(padx=5)
         timeLabelsAm.append(amLabel) #appends the label to the list for further use
     
-    for label in range (0, len(timeLabelsAm)):
+    for label in range (len(timeLabelsAm)):
         timeLabelsAm[label].pack(anchor = "sw", side=tk.BOTTOM)
 
-    for label in range (0, len(timeLabelsPm)):
+    for label in range (len(timeLabelsPm)):
         timeLabelsPm[label].pack(anchor = "sw", side=tk.BOTTOM)
+
+    def showTaskInfo(task):
+        messagebox.showinfo("Task Details", task)
+
+    def updateTaskLabel():
+        for label in timeLabelsPm:
+            label.config(text="", cursor="")
+        for label in timeLabelsAm:
+            label.config(text="", cursor="")
+
+        for timestamp, task in tasks.items():
+            hour_str, am_pm = timestamp.split()[1].split(":")
+            hour = int(hour_str)
+            if int(hour) >= 12:
+                am_pm = "pm"
+            if int(hour) > 12:
+                hour = str(int(hour) - 12)
+            else: 
+                am_pm = "am"
+                if hour == "00":
+                    hour = "12"
+            timeLabel = None
+
+            if am_pm == "pm":
+                timeLabel = timeLabelsPm[int(hour) - 1]
+            elif am_pm == "am":
+                timeLabel = timeLabelsAm[int(hour) - 1]
+            if timeLabel:
+                if not timeLabel.cget("text"):
+                    timeLabel.config(text=task, cursor="hand2")
+                    timeLabel.bind("<Button-1>", lambda event, task=task: showTaskInfo(task))
+
      
     # Entrybox with temporary text
     def delTempText(e):
@@ -112,20 +170,26 @@ def schedulePage():
     dropDown = tk.OptionMenu(scheduleFrame, timeClick, *options)
     dropDown.pack()
 
-    # Store tasks ahead of time in file
+    tasks = {}
 
     def addTaskClick():
         dateInput = cal.get_date()
         taskInput = taskEntry.get()
-        timeInput = timeClick.get() # if user doesn't select time tell them to select time or put in a no time assigned box on the side
-        print(taskInput)
+        timeInput = timeClick.get() 
+        
+        if dateInput and timeInput and taskInput:
+            timestamp = f"{dateInput.strftime('%Y-%m-%d')} {timeInput}"
+            tasks[timestamp] = taskInput
+            saveTask()
+            updateTaskLabel()
+
 
     addTaskButton = ttk.Button(scheduleFrame, text="Add Task", command=addTaskClick)
     addTaskButton.pack()
-
-# make it able to be called back to home page
-
-    scheduleFrame.pack(pady=20)
+    updateTaskLabel()
+    
+    root.protocol("WM_DELETE_WINDOW", onClose) #saves tasks when window closed
+    scheduleFrame.pack(pady=20) # make it able to be called back to home page
 
 def habitsPage():
     habitsFrame = tk.Frame(displayFrame)
