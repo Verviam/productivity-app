@@ -9,6 +9,7 @@ from tkinter import filedialog
 from functools import partial
 import json
 import notes
+import os
 
 root = tk.Tk()
 root.geometry('1024x768')
@@ -42,18 +43,42 @@ def toDoPage():
 
 def schedulePage():
     scheduleFrame = tk.Frame(displayFrame, bg = '#073B3A')
-    topLabel = tk.Label(scheduleFrame, text='Schedule', font=('Bold', 30), bg="#0B6E4F", fg="#00f678")
+    topLabel = tk.Label(scheduleFrame, text='Schedule', font=('Bold', 30), bg="#073B3A", fg="#00f678")
     topLabel.pack()
+    
+    def saveTask():
+        if tasks:
+            with open('tasks.json', 'w') as file: 
+                json.dump(tasks, file)
+
+        # else if user doesn't select time tell them to select time or put in a no time assigned box on the side 
+
+    def loadTask():
+        global tasks
+        if os.path.exists('tasks.json'):
+            with open('tasks.json', 'r') as file:
+                try: 
+                    tasks = json.load(file)
+                except json.JSONDecodeError:
+                    tasks = {}
+        else: 
+            tasks = {}
+
+    def onClose():
+        saveTask()
+        root.destroy()
+
+    loadTask()
 
     Pm = "pm:"
     numsPm = ['11', '10', '9', '8', '7', '6', '5', '4', '3', '2', '1', '12']
-    timeLabelsPm=[] 
+    timeLabelsPm= []
     for numPm in numsPm: #iterates over your nums
-        timePm = numPm + Pm
+        timePm = numPm + Pm 
         pmLabel = tk.Label(scheduleFrame,text=timePm, fg="#00f678", bg="#073B3A", font=('Bold', 12)) #set your text
         pmLabel.pack(padx=5)
         timeLabelsPm.append(pmLabel) #appends the label to the list for further use
-    
+
     Am = "am:"
     numsAm = ['11', '10', '9', '8', '7', '6', '5', '4', '3', '2', '1', '12']
     timeLabelsAm=[] 
@@ -63,11 +88,19 @@ def schedulePage():
         amLabel.pack(padx=5)
         timeLabelsAm.append(amLabel) #appends the label to the list for further use
     
-    for label in range (0, len(timeLabelsAm)):
+    for label in range (len(timeLabelsAm)):
         timeLabelsAm[label].pack(anchor = "sw", side=tk.BOTTOM)
 
-    for label in range (0, len(timeLabelsPm)):
+    for label in range (len(timeLabelsPm)):
         timeLabelsPm[label].pack(anchor = "sw", side=tk.BOTTOM)
+
+
+    def updateTaskLabel():
+        for label in timeLabelsPm:
+            label.config(text=timePm + tasks)
+        for label in timeLabelsAm:
+            label.config(text=timeAm + tasks)
+
      
     # Entrybox with temporary text
     def delTempText(e):
@@ -116,20 +149,26 @@ def schedulePage():
     dropDown = tk.OptionMenu(scheduleFrame, timeClick, *options)
     dropDown.pack()
 
-    # Store tasks ahead of time in file
+    tasks = {} 
 
     def addTaskClick():
         dateInput = cal.get_date()
         taskInput = taskEntry.get()
-        timeInput = timeClick.get() # if user doesn't select time tell them to select time or put in a no time assigned box on the side
-        print(taskInput)
+        timeInput = timeClick.get() 
+        
+        if dateInput and timeInput and taskInput:
+            timestamp = f"{dateInput.strftime('%Y-%m-%d')} {timeInput}" 
+            tasks[timestamp] = taskInput
+            saveTask()
+            updateTaskLabel()
+
 
     addTaskButton = ttk.Button(scheduleFrame, text="Add Task", command=addTaskClick)
     addTaskButton.pack()
-
-# make it able to be called back to home page
-
-    scheduleFrame.pack(pady=20)
+    updateTaskLabel()
+    
+    root.protocol("WM_DELETE_WINDOW", onClose) #saves tasks when window closed
+    scheduleFrame.pack(pady=20) # make it able to be called back to home page
 
 def habitsPage():
     habitsFrame = tk.Frame(displayFrame)
