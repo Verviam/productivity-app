@@ -5,8 +5,11 @@ from PIL import Image, ImageTk
 import datetime as dt
 from time import strftime
 from tkcalendar import DateEntry
-import json # for saving tasks for specific dates
-import os 
+from tkinter import filedialog
+from functools import partial
+import json
+import notes
+import os
 
 root = tk.Tk()
 root.geometry('1024x768')
@@ -176,51 +179,91 @@ def habitsPage():
     habitsFrame.pack(pady=20)
 
 def notesPage():
-    notesFrame = tk.Frame(displayFrame)
-    topLabel = tk.Label(notesFrame, text='Notes', font=('Bold', 30), bg="#0B6E4F", fg="#00f678")
-    
-    # Deletes Pages to switch to new frames
-    def deletePages():
-        for frame in displayFrame.winfo_children():
-            frame.destroy()
 
-    # Indicator functions
-    def indicator(label, page):
-        hide_indicator()
-        label.config(bg='#21D375')
-        deletePages()
-        page()
-    filler = tk.Button(displayFrame, text="", font=('Bold', 12), bg="#0B6E4F", fg="#00f678", activebackground="#0B6E4F", 
-                       activeforeground="#00f678", borderwidth=0, highlightthickness=0)
+    displayFrame.destroy()
+
+    mainnotesFrame = tk.Frame(root, bg='#0B6E4F')
+    mainnotesFrame.pack(side=tk.LEFT)
+    mainnotesFrame.pack_propagate(False)
+    mainnotesFrame.configure(height = 2000, width = 2000)
+
+    def add_notes():
+        new_note = tk.Button(mainnotesFrame, text="Untitled", font=('Bold', 20), bg="#073B3A", fg="#00f678", 
+                            activebackground="#073B3A", activeforeground="#00f678", borderwidth=0, highlightthickness=0)
+        new_note.pack(padx=50, pady=5, ipadx=900, before=add_note)
+        mainnotesFrame.destroy()
+
+    filler = tk.Button(mainnotesFrame, text="", font=('Bold', 12), bg="#0B6E4F", fg="#00f678", activebackground="#0B6E4F", 
+                            activeforeground="#00f678", borderwidth=0, highlightthickness=0)
     filler.pack(padx=50, pady=5, ipadx=900)
 
-    note_example = tk.Button(displayFrame, text="Note Example", font=('Bold', 20), bg="#073B3A", fg="#00f678", 
-                             activebackground="#073B3A", activeforeground="#00f678", borderwidth=0, highlightthickness=0)
+    with open('Main/note_example_title.txt') as f: note_example_title = f.read()
+
+    note_example = tk.Button(mainnotesFrame, text=note_example_title, font=('Bold', 20), bg="#073B3A", fg="#00f678", 
+                                activebackground="#073B3A", activeforeground="#00f678", borderwidth=0, highlightthickness=0)
     note_example.pack(padx=50, pady=5, ipadx=900)
-    
-    def add_new_note():
-        for widgets in displayFrame.winfo_children():
-            widgets.destroy()
-        title = tk.Entry(displayFrame, font=('Bold', 20), bg="#073B3A", fg="#00f678", borderwidth=0, highlightthickness=0)
-        title.pack(padx=10, pady=10, side=tk.LEFT, anchor="n")
-        Untitled = "Untitled"
-        title.insert(0, Untitled)
 
-        def delTempText():
-            title.delete(0,"end")
-        
-        title.bind("<FocusIn>", delTempText)
-
-        note_entry = tk.Entry(displayFrame, font=('Bold', 20), bg="#073B3A", fg="#00f678", borderwidth=0, highlightthickness=0)
-        note_entry.pack(padx=10, pady=10, )
-
-    add_note = tk.Button(displayFrame, text="+", font=('Bold', 20), bg="#073B3A", fg="#00f678", 
-                         activebackground="#073B3A", activeforeground="#00f678", borderwidth=0, highlightthickness=0,
-                         command=add_new_note)
+    add_note = tk.Button(mainnotesFrame, text="+", font=('Bold', 20), bg="#073B3A", fg="#00f678", 
+                            activebackground="#073B3A", activeforeground="#00f678", borderwidth=0, highlightthickness=0,
+                            command=add_notes)
     add_note.pack(padx=50, pady=5, ipadx=900)
+                
     
 
-    topLabel.pack()  
+    notesFrame = tk.Frame(root, bg='#0B6E4F')
+    notesFrame.pack(side=tk.LEFT)
+    notesFrame.pack_propagate(False)
+    notesFrame.configure(height = 2000, width = 2000)
+    
+    def goback():
+        notesFrame.destroy()
+        notesPage()
+
+    def del_temp_text(e):
+        title.delete(0, "end")
+    
+    def on_enter():
+        text = note_entry.get("1.0", tk.END).strip()
+        # Handle the text entered when the Return key is pressed
+                
+    def save_title():
+        title_to_save = title.get()
+        file_path = r"D:\Python\productivity-app\Main\Title.txt"
+        with open(file_path, "w") as file:
+            file.write(title_to_save)
+                
+    def save_note(duration_ms):
+        text_to_save = note_entry.get("1.0", tk.END)
+        file_path = r"D:\Python\productivity-app\Main\Note.txt"
+        with open(file_path, "w") as file:
+            file.write(text_to_save)
+        save_button.config(text="Saved!")
+        save_button.after(2000, lambda: save_button.config(text="Save"))
+
+    # Create widgets
+    entry_button_frame = tk.Frame(notesFrame, bg="#0B6E4F")
+    entry_button_frame.pack(side="top", padx=10, pady=10, fill="x")
+
+    go_back_button = tk.Button(entry_button_frame, text="<", font=('Bold', 20), bg="#073B3A", fg="#00f678",
+                                activebackground="#073B3A", activeforeground="#00f678",
+                                borderwidth=0, highlightthickness=0, command=goback)
+    go_back_button.pack(side="left", padx=10, pady=10)
+            
+    title = tk.Entry(entry_button_frame, font=('Bold', 30), bg="#073B3A", fg="#00f678", 
+                        borderwidth=0, highlightthickness=0, justify='center')
+    title.pack(side="left", padx=10, pady=10, fill="x", expand=True)
+    title.insert(0, 'Untitled')
+    title.bind("<FocusIn>", del_temp_text)
+    title.bind("<FocusOut>", save_title)
+            
+    save_button = tk.Button(entry_button_frame, text="Save", font=('Bold', 20), bg="#073B3A", fg="#00f678",
+                            activebackground="#073B3A", activeforeground="#00f678", 
+                            borderwidth=0, highlightthickness=0, command=partial(save_note, 3000))
+    save_button.pack(side="left", padx=10, pady=10)
+            
+    note_entry = tk.Text(notesFrame, font=('Bold', 20), bg="#073B3A", fg="#00f678", borderwidth=0, highlightthickness=0, wrap='word')
+    note_entry.pack(padx=10, pady=10, ipadx=200, ipady=200, fill="both", expand=True)
+    note_entry.bind("<Return>", on_enter)
 
 
 def timerPage():
@@ -350,5 +393,4 @@ displayFrame.configure(height = 2000, width = 2000)
 # open home page as main page
 homePage()
 root.mainloop()
-
                 
