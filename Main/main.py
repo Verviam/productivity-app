@@ -69,13 +69,13 @@ def schedulePage():
 
     Pm = "pm:"
     numsPm = ['11', '10', '9', '8', '7', '6', '5', '4', '3', '2', '1', '12']
-    timeLabelsPm=[] 
+    timeLabelsPm= []
     for numPm in numsPm: #iterates over your nums
-        timePm = numPm + Pm
+        timePm = numPm + Pm 
         pmLabel = tk.Label(scheduleFrame,text=timePm, fg="#00f678", bg="#073B3A", font=('Bold', 12)) #set your text
         pmLabel.pack(padx=5)
         timeLabelsPm.append(pmLabel) #appends the label to the list for further use
-    
+
     Am = "am:"
     numsAm = ['11', '10', '9', '8', '7', '6', '5', '4', '3', '2', '1', '12']
     timeLabelsAm=[] 
@@ -91,36 +91,12 @@ def schedulePage():
     for label in range (len(timeLabelsPm)):
         timeLabelsPm[label].pack(anchor = "sw", side=tk.BOTTOM)
 
-    def showTaskInfo(task):
-        messagebox.showinfo("Task Details", task)
 
     def updateTaskLabel():
         for label in timeLabelsPm:
-            label.config(text="", cursor="")
+            label.config(text=timePm + tasks)
         for label in timeLabelsAm:
-            label.config(text="", cursor="")
-
-        for timestamp, task in tasks.items():
-            hour_str, am_pm = timestamp.split()[1].split(":")
-            hour = int(hour_str)
-            if int(hour) >= 12:
-                am_pm = "pm"
-            if int(hour) > 12:
-                hour = str(int(hour) - 12)
-            else: 
-                am_pm = "am"
-                if hour == "00":
-                    hour = "12"
-            timeLabel = None
-
-            if am_pm == "pm":
-                timeLabel = timeLabelsPm[int(hour) - 1]
-            elif am_pm == "am":
-                timeLabel = timeLabelsAm[int(hour) - 1]
-            if timeLabel:
-                if not timeLabel.cget("text"):
-                    timeLabel.config(text=task, cursor="hand2")
-                    timeLabel.bind("<Button-1>", lambda event, task=task: showTaskInfo(task))
+            label.config(text=timeAm + tasks)
 
      
     # Entrybox with temporary text
@@ -170,7 +146,7 @@ def schedulePage():
     dropDown = tk.OptionMenu(scheduleFrame, timeClick, *options)
     dropDown.pack()
 
-    tasks = {}
+    tasks = {} 
 
     def addTaskClick():
         dateInput = cal.get_date()
@@ -178,7 +154,7 @@ def schedulePage():
         timeInput = timeClick.get() 
         
         if dateInput and timeInput and taskInput:
-            timestamp = f"{dateInput.strftime('%Y-%m-%d')} {timeInput}"
+            timestamp = f"{dateInput.strftime('%Y-%m-%d')} {timeInput}" 
             tasks[timestamp] = taskInput
             saveTask()
             updateTaskLabel()
