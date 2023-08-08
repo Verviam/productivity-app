@@ -56,13 +56,9 @@ def schedulePage():
     def loadTask():
         global tasks
         if os.path.exists('tasks.json'):
-            with open('tasks.json', 'r') as file:
-                try: 
+            with open('tasks.json', 'r') as file: 
                     tasks = json.load(file)
-                except json.JSONDecodeError:
-                    tasks = {}
-        else: 
-            tasks = {}
+
 
     def onClose():
         saveTask()
@@ -156,22 +152,16 @@ def schedulePage():
             updateTaskLabel(timestamp)
 
     def updateTaskLabel(timestamp): # has to be based on the same time and date based on timestamp new task input data + be able to add multiple different values to tasks.json
+        selectedTime = timeClick.get()
+
         for label in timeLabelsPm:
             timePm = label.cget ("text")
-            if timePm and timePm.endswith("pm:"):
-                timePm = timePm.replace("pm:", "pm:" + taskEntry.get())
-                if timestamp in tasks and timePm == timestamp[11:14]:
-                    label.config(text = timePm + " " + tasks[timestamp])
-                else: 
-                    label.config(text = timePm)
+            if timePm.startswith(selectedTime) and timePm.endswith("pm:"):
+                label.config(text=timePm.replace("pm:", "pm: " + taskEntry.get()))
         for label in timeLabelsAm:
-            timeAm = label.cget ("text")
-            if timeAm and timeAm.endswith("am:"):
-                timeAm = timeAm.replace("am:", "am:" + taskEntry.get())
-                if timestamp in tasks and timeAm == timestamp[11:14]:
-                    label.config(text=timeAm + " " + tasks[timestamp])
-                else:
-                    label.config(text=timeAm)
+            timeAm = label.cget("text")
+            if timeAm.startswith(selectedTime) and timeAm.endswith("am:"):
+                label.config(text=timeAm.replace("am:", "am: " + taskEntry.get()))
 
 
     addTaskButton = ttk.Button(scheduleFrame, text="Add Task", command=addTaskClick)
