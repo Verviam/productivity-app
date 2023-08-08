@@ -51,94 +51,20 @@ def schedulePage():
             with open('tasks.json', 'w') as file: 
                 json.dump(tasks, file)
 
-        # else if user doesn't select time tell them to select time or put in a no time assigned box on the side 
+        # Add handling for cases when the user doesn't select time
 
-    def loadTask():
-        global tasks
-        if os.path.exists('tasks.json'):
-            with open('tasks.json', 'r') as file: 
-                    tasks = json.load(file)
+    def updateTaskLabel(timestamp): # change to be based on date too or delete
+        selectedTime = timeClick.get()
+        taskText = tasks.get(timestamp, "")
 
-
-    def onClose():
-        saveTask()
-        root.destroy()
-
-    loadTask()
-
-    Pm = "pm:"
-    numsPm = ['11', '10', '9', '8', '7', '6', '5', '4', '3', '2', '1', '12']
-    timeLabelsPm= []
-    for numPm in numsPm: #iterates over your nums
-        timePm = numPm + Pm 
-        pmLabel = tk.Label(scheduleFrame,text=timePm, fg="#00f678", bg="#073B3A", font=('Bold', 12)) #set your text
-        pmLabel.pack(padx=5)
-        timeLabelsPm.append(pmLabel) #appends the label to the list for further use
-
-    Am = "am:"
-    numsAm = ['11', '10', '9', '8', '7', '6', '5', '4', '3', '2', '1', '12']
-    timeLabelsAm=[] 
-    for numAm in numsAm: #iterates over your nums
-        timeAm = numAm + Am
-        amLabel = tk.Label(scheduleFrame,text=timeAm, fg="#00f678", bg="#073B3A", font=('Bold', 12)) #set your text
-        amLabel.pack(padx=5)
-        timeLabelsAm.append(amLabel) #appends the label to the list for further use
-    
-    for label in range (len(timeLabelsAm)):
-        timeLabelsAm[label].pack(anchor = "sw", side=tk.BOTTOM)
-
-    for label in range (len(timeLabelsPm)):
-        timeLabelsPm[label].pack(anchor = "sw", side=tk.BOTTOM)
-
-     
-    # Entrybox with temporary text
-    def delTempText(e):
-        taskEntry.delete(0,"end") 
-
-    taskEntry = tk.Entry(scheduleFrame, width=40)
-    taskEntry.pack(padx=100)
-    taskEntry.insert(0, 'Enter Your Task Here')
-    taskEntry.bind("<FocusIn>", delTempText)
-     
-    # Select Day Calendar
-    cal = DateEntry(scheduleFrame, width=12, background="#00f678", foreground='black', borderwidth=2)
-    cal.pack(side=tk.TOP)
-
-    # Select Time
-    options = [
-        "12am", 
-        "1am", 
-        "2am", 
-        "3am", 
-        "4am", 
-        "5am", 
-        "6am", 
-        "7am", 
-        "8am", 
-        "9am", 
-        "10am", 
-        "11am", 
-        "12pm", 
-        "1pm", 
-        "2pm", 
-        "3pm", 
-        "4pm", 
-        "5pm", 
-        "6pm", 
-        "7pm", 
-        "8pm", 
-        "9pm", 
-        "10pm", 
-        "11pm"
-        ]
-    
-    timeClick = tk.StringVar()
-
-    timeClick.set("Select a Time")
-    dropDown = tk.OptionMenu(scheduleFrame, timeClick, *options)
-    dropDown.pack()
-
-    tasks = {} 
+        for label in timeLabelsPm:
+            timePm = label.cget ("text")
+            if timePm.startswith(selectedTime) and timePm.endswith("pm:"):
+                label.config(text=timePm.replace("pm:", "pm: " + taskText))
+        for label in timeLabelsAm:
+            timeAm = label.cget("text")
+            if timeAm.startswith(selectedTime) and timeAm.endswith("am:"):
+                label.config(text=timeAm.replace("am:", "am: " + taskText))
 
     def addTaskClick():
         dateInput = cal.get_date()
@@ -150,28 +76,105 @@ def schedulePage():
             tasks[timestamp] = taskInput
             saveTask()
             updateTaskLabel(timestamp)
+     
+    def onClose():
+        saveTask()
+        root.destroy()
 
-    def updateTaskLabel(timestamp): # has to be based on the same time and date based on timestamp new task input data + be able to add multiple different values to tasks.json
-        selectedTime = timeClick.get()
-
-        for label in timeLabelsPm:
-            timePm = label.cget ("text")
-            if timePm.startswith(selectedTime) and timePm.endswith("pm:"):
-                label.config(text=timePm.replace("pm:", "pm: " + taskEntry.get()))
-        for label in timeLabelsAm:
-            timeAm = label.cget("text")
-            if timeAm.startswith(selectedTime) and timeAm.endswith("am:"):
-                label.config(text=timeAm.replace("am:", "am: " + taskEntry.get()))
-
-
-    addTaskButton = ttk.Button(scheduleFrame, text="Add Task", command=addTaskClick)
-    addTaskButton.pack()
-
-    for timestamp in tasks.keys():
-        updateTaskLabel(timestamp)
+    def loadTask():
+        global tasks
+        if os.path.exists('tasks.json'):
+            with open('tasks.json', 'r+') as file:  # see if r+ neededd
+                    tasks = json.load(file)
+                    for timestamp in tasks.keys():
+                        updateTaskLabel(timestamp)
+        else: 
+            tasks = {}
     
-    root.protocol("WM_DELETE_WINDOW", onClose) #saves tasks when window closed
-    scheduleFrame.pack(pady=20) # make it able to be called back to home page
+    # Entrybox with temporary text
+    def delTempText(e):
+        taskEntry.delete(0,"end") 
+    
+    loadTask()
+    def setup_schedule_frame():
+        scheduleFrame = tk.Frame(displayFrame, bg='#073B3A')
+        scheduleFrame.pack(pady=20)
+        Pm = "pm:"
+        numsPm = ['11', '10', '9', '8', '7', '6', '5', '4', '3', '2', '1', '12']
+        timeLabelsPm= []
+        for numPm in numsPm: #iterates over your nums
+            timePm = numPm + Pm 
+            pmLabel = tk.Label(scheduleFrame,text=timePm, fg="#00f678", bg="#073B3A", font=('Bold', 12)) #set your text
+            pmLabel.pack(padx=5)
+            timeLabelsPm.append(pmLabel) #appends the label to the list for further use
+
+        Am = "am:"
+        numsAm = ['11', '10', '9', '8', '7', '6', '5', '4', '3', '2', '1', '12']
+        timeLabelsAm=[] 
+        for numAm in numsAm: #iterates over your nums
+            timeAm = numAm + Am
+            amLabel = tk.Label(scheduleFrame,text=timeAm, fg="#00f678", bg="#073B3A", font=('Bold', 12)) #set your text
+            amLabel.pack(padx=5)
+            timeLabelsAm.append(amLabel) #appends the label to the list for further use
+        
+        for label in range (len(timeLabelsAm)):
+            timeLabelsAm[label].pack(anchor = "sw", side=tk.BOTTOM)
+
+        for label in range (len(timeLabelsPm)):
+            timeLabelsPm[label].pack(anchor = "sw", side=tk.BOTTOM)
+    
+        taskEntry = tk.Entry(scheduleFrame, width=40)
+        taskEntry.pack(padx=100)
+        taskEntry.insert(0, 'Enter Your Task Here')
+        taskEntry.bind("<FocusIn>", delTempText)
+        
+        # Select Day Calendar
+        cal = DateEntry(scheduleFrame, width=12, background="#00f678", foreground='black', borderwidth=2)
+        cal.pack(side=tk.TOP)
+
+        # Select Time
+        options = [
+            "12am", 
+            "1am", 
+            "2am", 
+            "3am", 
+            "4am", 
+            "5am", 
+            "6am", 
+            "7am", 
+            "8am", 
+            "9am", 
+            "10am", 
+            "11am", 
+            "12pm", 
+            "1pm", 
+            "2pm", 
+            "3pm", 
+            "4pm", 
+            "5pm", 
+            "6pm", 
+            "7pm", 
+            "8pm", 
+            "9pm", 
+            "10pm", 
+            "11pm"
+            ]
+        
+        timeClick = tk.StringVar()
+
+        timeClick.set("Select a Time")
+        dropDown = tk.OptionMenu(scheduleFrame, timeClick, *options)
+        dropDown.pack()
+
+        tasks = {} 
+
+        addTaskButton = ttk.Button(scheduleFrame, text="Add Task", command=addTaskClick)
+        addTaskButton.pack()
+
+        root.protocol("WM_DELETE_WINDOW", onClose) #saves tasks when window closed
+        scheduleFrame.pack(pady=20) # make it able to be called back to home page
+    displayFrame.destroy()
+    setup_schedule_frame()
 
 def habitsPage():
     habitsFrame = tk.Frame(displayFrame)
