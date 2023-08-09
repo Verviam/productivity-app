@@ -232,7 +232,7 @@ def notesPage():
                 
     def save():
         title_to_save = title.get()
-        file_path = f"D:/Python/productivity-app/productivity-app/Main/notes/{title_to_save}.txt"
+        file_path = f"D:/Python/productivity-app/Main/notes/{title_to_save}.txt"
         
         with open(file_path, "w") as file:
             text_to_save = note_entry.get("1.0", tk.END)  # Get the text from the note_entry widget
