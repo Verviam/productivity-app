@@ -202,9 +202,11 @@ def notesPage():
                             activeforeground="#00f678", borderwidth=0, highlightthickness=0)
     filler.pack(padx=50, pady=5, ipadx=900)
 
-    with open('Main/note_example_title.txt') as f: note_example_title = f.read()
+    file_path = 'D:/Python/productivity-app/productivity-app/Main/notes/Note Example.txt'
+    file_name = os.path.basename(file_path)
+    title = os.path.splitext(file_name)[0]
 
-    note_example = tk.Button(mainnotesFrame, text=note_example_title, font=('Bold', 20), bg="#073B3A", fg="#00f678", 
+    note_example = tk.Button(mainnotesFrame, text=title, font=('Bold', 20), bg="#073B3A", fg="#00f678", 
                                 activebackground="#073B3A", activeforeground="#00f678", borderwidth=0, highlightthickness=0)
     note_example.pack(padx=50, pady=5, ipadx=900)
 
@@ -231,17 +233,14 @@ def notesPage():
         text = note_entry.get("1.0", tk.END).strip()
         # Handle the text entered when the Return key is pressed
                 
-    def save_title():
+    def save():
         title_to_save = title.get()
-        file_path = r"D:\Python\productivity-app\Main\Title.txt"
+        file_path = f"D:/Python/productivity-app/Main/notes/{title_to_save}.txt"
+        
         with open(file_path, "w") as file:
-            file.write(title_to_save)
-                
-    def save_note(duration_ms):
-        text_to_save = note_entry.get("1.0", tk.END)
-        file_path = r"D:\Python\productivity-app\Main\Note.txt"
-        with open(file_path, "w") as file:
+            text_to_save = note_entry.get("1.0", tk.END)  # Get the text from the note_entry widget
             file.write(text_to_save)
+        
         save_button.config(text="Saved!")
         save_button.after(2000, lambda: save_button.config(text="Save"))
 
@@ -259,11 +258,10 @@ def notesPage():
     title.pack(side="left", padx=10, pady=10, fill="x", expand=True)
     title.insert(0, 'Untitled')
     title.bind("<FocusIn>", del_temp_text)
-    title.bind("<FocusOut>", save_title)
             
     save_button = tk.Button(entry_button_frame, text="Save", font=('Bold', 20), bg="#073B3A", fg="#00f678",
                             activebackground="#073B3A", activeforeground="#00f678", 
-                            borderwidth=0, highlightthickness=0, command=partial(save_note, 3000))
+                            borderwidth=0, highlightthickness=0, command=save)
     save_button.pack(side="left", padx=10, pady=10)
             
     note_entry = tk.Text(notesFrame, font=('Bold', 20), bg="#073B3A", fg="#00f678", borderwidth=0, highlightthickness=0, wrap='word')
