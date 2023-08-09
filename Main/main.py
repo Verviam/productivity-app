@@ -43,7 +43,8 @@ def schedulePage():
     scheduleFrame = tk.Frame(displayFrame, bg = '#073B3A')
     topLabel = tk.Label(scheduleFrame, text='Schedule', font=('Bold', 30), bg="#073B3A", fg="#00f678")
     topLabel.pack()
-    
+    tasks = {}
+
     def saveTask():
         if tasks:
             with open('tasks.json', 'w') as file: 
@@ -51,21 +52,27 @@ def schedulePage():
 
         # Add handling for cases when the user doesn't select time
 
-    def updateTaskLabelOnOpen(timestamp):
-        selectedTime = timestamp[11:14]
-
-    def updateTaskLabelOnClick(timestamp): # change to be based on date too or delete
-        selectedTime = timeClick.get()
-        taskText = tasks.get(timestamp, "")
-
+    def updateTaskLabels(selectedTime, taskText): # add functionality for changes based on date too
         for label in timeLabelsPm:
-            timePm = label.cget ("text")
+            timePm = label.cget("text")
             if timePm.startswith(selectedTime) and timePm.endswith("pm:"):
                 label.config(text=timePm.replace("pm:", "pm: " + taskText))
+        
         for label in timeLabelsAm:
             timeAm = label.cget("text")
             if timeAm.startswith(selectedTime) and timeAm.endswith("am:"):
                 label.config(text=timeAm.replace("am:", "am: " + taskText))
+
+    def updateTaskLabelOnOpen():
+        for timestamp, taskText in tasks.items():
+            selectedTime = timestamp[11:13]
+            updateTaskLabels(selectedTime, taskText)
+
+    def updateTaskLabelOnClick(timestamp):
+        selectedTime = timeClick.get()
+        taskText = tasks.get(timestamp, "")
+        updateTaskLabels(selectedTime, taskText)
+
 
     def addTaskClick():
         dateInput = cal.get_date()
@@ -85,12 +92,12 @@ def schedulePage():
     def loadTask():
         global tasks
         if os.path.exists('tasks.json'):
-            with open('tasks.json', 'r+') as file:  # see if r+ neededd
+            with open('tasks.json', 'r') as file:  # see if r+ neededd
                     tasks = json.load(file)
                     for timestamp in tasks.keys():
-                        updateTaskLabelOnOpen(timestamp)
+                        updateTaskLabelOnOpen()
         else: 
-            tasks = {}
+            tasks.clear()
     
     # Entrybox with temporary text
     def delTempText(e):
