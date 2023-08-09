@@ -44,6 +44,7 @@ def schedulePage():
     topLabel = tk.Label(scheduleFrame, text='Schedule', font=('Bold', 30), bg="#073B3A", fg="#00f678")
     topLabel.pack()
     tasks = {}
+    timestampList = []
 
     def saveTask():
         if tasks:
@@ -63,7 +64,7 @@ def schedulePage():
             if timeAm.startswith(selectedTime) and timeAm.endswith("am:"):
                 label.config(text=timeAm.replace("am:", "am: " + taskText))
 
-    def updateTaskLabelOnOpen():
+    def updateTaskLabelOnOpen(timestamp):
         for timestamp, taskText in tasks.items():
             selectedTime = timestamp[11:13]
             updateTaskLabels(selectedTime, taskText)
@@ -90,14 +91,17 @@ def schedulePage():
         root.destroy()
 
     def loadTask():
-        global tasks
+        global tasks, timestampList
         if os.path.exists('tasks.json'):
-            with open('tasks.json', 'r') as file:  # see if r+ neededd
-                    tasks = json.load(file)
-                    for timestamp in tasks.keys():
-                        updateTaskLabelOnOpen()
+            with open('tasks.json', 'r') as file: 
+                data = json.load(file)
+                tasks = data
+                timestampList = list(data.keys())
+                for timestamp in timestampList: 
+                        updateTaskLabelOnOpen(timestamp)
         else: 
             tasks.clear()
+            timestampList.clear()
     
     # Entrybox with temporary text
     def delTempText(e):
