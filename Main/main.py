@@ -23,11 +23,8 @@ root.iconphoto(False, Image_icon)
 # Switch frame functions
 def homePage():
     homeFrame = tk.Frame(displayFrame)
-    welcomeLabel = tk.Label(displayFrame, text='Hello User298302', font=('Bold', 30), bg="#0B6E4F", fg="#00f678")
-    welcomeLabel.place(x=10, y=10)
-    cover = tk.Frame(displayFrame, bg='red')
-    cover.configure(width=33, height=33, bg='#0B6E4F')
-    cover.place(x=390, y=10)
+    welcomeLabel = tk.Label(displayFrame, text='Coming in the future. Please Check out Schedule and Notes', wraplength= 500, font=('Bold', 30), bg="#0B6E4F", fg="#00f678")
+    welcomeLabel.pack()
  
     # drag and drop habits and to do into schedule 
     # only show today's schedule
@@ -36,7 +33,7 @@ def homePage():
 
 def toDoPage():
     toDoFrame = tk.Frame(displayFrame)
-    topLabel = tk.Label(toDoFrame, text='To Do List', font=('Bold', 30), bg="#0B6E4F", fg="#00f678")
+    topLabel = tk.Label(toDoFrame, text='Coming in the future. Please Check out Schedule and Notes', wraplength= 500, font=('Bold', 30), bg="#0B6E4F", fg="#00f678")
     topLabel.pack()
     # add different to do lists for different tasks
     toDoFrame.pack(pady=20)
@@ -54,7 +51,10 @@ def schedulePage():
 
         # Add handling for cases when the user doesn't select time
 
-    def updateTaskLabel(timestamp): # change to be based on date too or delete
+    def updateTaskLabelOnOpen(timestamp):
+        selectedTime = timestamp[11:14]
+
+    def updateTaskLabelOnClick(timestamp): # change to be based on date too or delete
         selectedTime = timeClick.get()
         taskText = tasks.get(timestamp, "")
 
@@ -76,7 +76,7 @@ def schedulePage():
             timestamp = f"{dateInput.strftime('%Y-%m-%d')} {timeInput}" 
             tasks[timestamp] = taskInput
             saveTask()
-            updateTaskLabel(timestamp)
+            updateTaskLabelOnClick(timestamp)
      
     def onClose():
         saveTask()
@@ -88,7 +88,7 @@ def schedulePage():
             with open('tasks.json', 'r+') as file:  # see if r+ neededd
                     tasks = json.load(file)
                     for timestamp in tasks.keys():
-                        updateTaskLabel(timestamp)
+                        updateTaskLabelOnOpen(timestamp)
         else: 
             tasks = {}
     
@@ -177,7 +177,7 @@ def schedulePage():
     
 def habitsPage():
     habitsFrame = tk.Frame(displayFrame)
-    topLabel = tk.Label(habitsFrame, text='Habits', font=('Bold', 30), bg="#0B6E4F", fg="#00f678")
+    topLabel = tk.Label(habitsFrame, text='Coming in the future. Please Check out Schedule and Notes', wraplength= 500, font=('Bold', 30), bg="#0B6E4F", fg="#00f678")
     topLabel.pack()
     
     habitsFrame.pack(pady=20)
@@ -270,7 +270,7 @@ def notesPage():
 
 def timerPage():
     timerFrame = tk.Frame(displayFrame)
-    topLabel = tk.Label(timerFrame, text='Timer', font=('Bold', 30), bg="#0B6E4F", fg="#00f678")
+    topLabel = tk.Label(timerFrame, text='Timer', wraplength= 500, font=('Bold', 30), bg="#0B6E4F", fg="#00f678")
     topLabel.pack()
 
     #time
@@ -303,7 +303,7 @@ def timerPage():
 
 def settingsPage():
     settingsFrame = tk.Frame(displayFrame)
-    topLabel = tk.Label(settingsFrame, text='Settings', font=('Bold', 30))
+    topLabel = tk.Label(settingsFrame, text='Coming in the future. Please Check out Schedule and Notes', wraplength= 500, font=('Bold', 30))
     topLabel.pack()
     
     settingsFrame.pack(pady=20)
